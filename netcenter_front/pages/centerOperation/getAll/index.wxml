@@ -1,0 +1,33 @@
+<!--pages/centerOperation/getAll/index.wxml-->
+<!-- <view style='padding-top:15rpx;padding-bottom:0rpx;display:flex;flex-direction:row;position:relative;'>
+  <scroll-view scroll-y="true" class="scroll">
+    <view class="arr_group">
+      <view class="arr_item" bindtap='jumpweb' wx:for="{{file}}" data-item="{{item}}" style="background-color:#fff; background-size: 100% 100%; border-radius:5rpx;height:190rpx;">
+        <image class="note_image" src="/icon/file.png"></image>
+        <view class="arr_information">
+          <text style="font-size:35rpx;">{{item.fname}}</text>
+          <text style="color:grey;font-size:30rpx;">提交人: {{item.submitid}}</text>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+</view> -->
+<view style='padding-top:15rpx;;display:flex;flex-direction:row;position:relative;'>
+  <block>
+    <scroll-view scroll-y="true">
+      <view class="arr_group">
+        <view class="arr_item" wx:for="{{file}}" style="background-color:#fff; background-size: 100% 100%; border-radius:5rpx;height:190rpx;">
+          <image class="note_image" src="/icon/file.png"></image>
+          <view class="arr_information" bindtap='jumpweb' data-flink="{{item.flink}}" data-item="{{item}}">
+            <text style="font-size:35rpx;">{{item.fname}}</text>
+            <text style="color:grey;font-size:30rpx;">提交人: {{item.submitid}}</text>
+          </view>
+          <view class="button_group">
+            <!-- <image class="button_image" bindtap='delfile' data-item='{{item}}' data-index="{{index}}" src="/icon/deleteFile.png"></image> -->
+          </view>
+        </view>
+      </view>
+    </scroll-view>
+  </block>
+
+</view>

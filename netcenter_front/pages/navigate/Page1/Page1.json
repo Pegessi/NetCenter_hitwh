@@ -1,0 +1,14 @@
+{
+  "navigationBarTitleText": "管理员",
+  "component": true,
+  "usingComponents": {
+    "crab-menu": "../../component/crab-ui/menu/index",
+    "crab-card": "../../component/crab-ui/card/index",
+    "i-cell": "../../component/iview-ui/cell/index",
+    "i-card": "../../component/iview-ui/card/index",
+    "i-cell-group": "../../component/iview-ui/cell-group/index",
+    "i-load-more": "../../component/iview-ui/load-more/index",
+    "i-toast": "../../component/iview-ui/toast/index",
+    "van-cell": "/miniprogram/miniprogram_npm/@vant/weapp/cell"
+  }
+}

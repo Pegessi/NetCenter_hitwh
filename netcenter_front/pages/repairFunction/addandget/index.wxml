@@ -1,0 +1,84 @@
+<!--pages/repairFunction/addandget/index.wxml-->
+<!-- logo区域 -->
+<view class="logoBox">
+  <van-image src="/icon/logobig.png" width="100" height="100"></van-image>
+</view>
+<!-- 导航区 -->
+<van-grid clickable column-num="2" direction="horizontal">
+  <van-grid-item icon="add-o" text="快速报修" bindtap="change1" icon-size="30rpx" />
+  <van-grid-item icon="user-circle-o" text="我的报修" bindtap="change2" icon-size="30rpx" />
+</van-grid>
+<!-- 网络报修表单区 -->
+<block wx:if="{{change==1}}">
+  <van-row>
+    <van-col span="24">
+      <van-cell-group>
+        <van-field clickable bindtap="menuList" data-id="1" label="故障类型" placeholder="请选择故障类型" left-icon="bulb-o"
+          right-icon="arrow-down" value="{{errorStr}}" size="large" readonly />
+        <van-field clickable bindtap="menuList" data-id="2" label="所在区域" placeholder="请选择所在区域" left-icon="flag-o"
+          right-icon="arrow-down" value="{{areaStr}}" size="large" readonly />
+        <van-field clickable bindtap="menuList" data-id="3" label="故障公寓" placeholder="请选择所在公寓" left-icon="hotel-o"
+          right-icon="arrow-down" value="{{dpartStr}}" size="large" readonly />
+        <van-field value="{{roomStr}}" clearable label="故障房间" left-icon="wap-home-o" placeholder="请输入房间号" size="large"
+          bind:change="onChangeRoom" />
+        <van-field value="{{phoneStr}}" clearable label="联系方式" left-icon="phone-o" placeholder="请输入联系电话" size="large"
+          bind:change="onChangePhone" type="number"/>
+      </van-cell-group>
+      <view class="buttonBox" />
+      <van-button bindtap="onSubscribe" icon="records" type="info" custom-style="width: 80%; font-size: 30rpx" block>
+        确认提交</van-button>
+    </van-col>
+  </van-row>
+</block>
+<!-- 我的报修 -->
+<block wx:if="{{change==2}}">
+  <block wx:if="{{isNull}}">
+    <van-empty description="暂无信息"></van-empty>
+  </block>
+  <block wx:else>
+    <scroll-view scroll-y="true" class="container" upper-threshold="10" lower-threshold="5"
+      scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
+      <block wx:for="{{repairlist}}" wx:for-item="item" wx:key="*this" data-index="{{index}}">
+        <view class="feed-item" bindtap='distribute' data-item='{{item}}'>
+          <view class="feed-source">
+            <a class="">
+              <text decode="{{true}}">编号:{{item.tableid}}{{item.failSolution}} 时间：{{item.submitdate}}</text>
+            </a>
+          </view>
+          <view class="feed-content">
+            <view class="question" qid="{{question_id}}" bindtap="bindQueTap">
+              <a class="question-link">
+                <text>故障地点：{{item.repairapartment}}-{{item.repairroom}}号房间</text>
+              </a>
+            </view>
+            <view class="answer-body">
+              <view bindtap="bindItemTap">
+                <text class="answer-txt">报修单状态：{{item.repairstatus}}</text>
+              </view>
+              <view class="answer-actions" wx:if="{{item.manageid!=null&&item.manageid!=''}}">
+                处理人id:{{item.manageid}}
+              </view>
+
+            </view>
+            <view wx:if="{{item.repairstatus=='已完成'}}" class="button_group" data-index="{{index}}">
+              <image class="button_image" bindtap='repairDelete' data-index="{{index}}" data-item='{{item}}'
+                src="/icon/deleteitem.png"></image>
+            </view>
+            <view wx:if="{{item.repairstatus=='未完成'}}" class="button_group" data-index="{{index}}">
+              <image class="button_image" bindtap='repairDelete' data-index="{{index}}" data-item='{{item}}'
+                src="/icon/deleteitem.png"></image>
+            </view>
+            <view wx:if="{{item.repairstatus=='待处理'}}" class="button_group" data-index="{{index}}">
+              <image class="button_image" bindtap='repairDelete' data-index="{{index}}" data-item='{{item}}'
+                src="/icon/deleteitem.png"></image>
+            </view>
+          </view>
+        </view>
+      </block>
+    </scroll-view>
+  </block>
+
+</block>
+<i-toast id="toast" />
+<!-- 选择弹窗 -->
+<van-action-sheet show="{{ show }}" actions="{{ menu }}" bind:close="onClose" bind:select="onSelect" />

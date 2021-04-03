@@ -1,0 +1,138 @@
+/* pages/centerOperation/manageAll/index.wxss */
+/* pages/functionpages/ziliao.wxss */
+.change1{
+  justify-content: center;
+  border: solid 1px #F5F5F5;
+  display: flex;
+  flex-direction: row;
+  background-color: #ffffff;
+  align-items: center;
+  font-size:35rpx;
+}
+.change2{
+  justify-content: center;
+  border: solid 1px #F5F5F5;
+  display: flex;
+  flex-direction: row;
+  background-color: #fff;
+  align-items: center;
+  font-size:35rpx;
+}
+.scroll {
+  height: 1500rpx;
+  /* z-index: 101; */
+  position: fixed;
+}
+
+.arr_group {
+  position: relative;
+  height: 150%;
+  left: 10rpx;
+  width: 98%;
+  padding-right: 5rpx;
+  display: flex;
+  flex-direction: column;
+}
+
+.arr_item {
+  position: relative;
+  height: 200rpx;
+  display: flex;
+  flex-direction: row;
+  margin-bottom:10rpx;
+
+}
+
+.note_image {
+position:relative;
+width:100rpx;
+height:100rpx;
+left:35rpx;
+top:25rpx;
+border-radius:5rpx;
+
+
+}
+
+.arr_information {
+  position: relative;
+  top: 30rpx;
+  left: 80rpx;
+  height: 200rpx;
+  display: flex;
+  flex-direction: column;
+  font-size: 30rpx;
+  width: 350rpx;
+}
+
+.button_group {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  left: 80rpx;
+  top: 30rpx;
+  margin-top:25rpx;
+
+}
+
+.button_image {
+  position: relative;
+  margin: 10rpx;
+  width: 50rpx;
+  height: 50rpx;
+}
+
+/* 发送资料地址 */
+
+.form {
+  position: relative;
+  top: 78%;
+  margin: 10rpx;
+  background-color: #fff;
+}
+
+.label-list {
+  position: relative;
+  top:20rpx;
+  padding-left: 50rpx;
+  padding-right: 10rpx;
+  display: flex;
+  height: 70rpx;
+  align-items: center;
+  border-bottom: 1px solid #e8e8e8;
+  margin-right: 10rpx;
+  width: 668rpx;
+}
+
+.label {
+  font-size:40rpx;
+  font-weight: 300;
+}
+
+.place {
+  left: 5rpx;
+  display: flex;
+  align-items: center;
+  font-size: 35rpx;
+}
+
+.submit {
+  position: relative;
+  background-color: #1296db;
+  color: #fff;
+  width: 85%;
+  margin-top: 40rpx;
+}
+.button_group {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  left: 170rpx;
+  top: 10rpx;
+}
+.button_image {
+  position: relative;
+  margin: 15rpx;
+  width: 40rpx;
+  height: 40rpx;
+}

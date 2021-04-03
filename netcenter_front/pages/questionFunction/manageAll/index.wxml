@@ -1,0 +1,84 @@
+<!--pages/questionFunction/manageAll/index.wxml-->
+<!--pages/FunctionPages/NetRepair.wxml-->
+<view class='tab-btn-wrapper'>
+  <view class='tab-btn {{tabpage===0?"select-tab":""}}' data-page='0' bindtap='fnSwitchTab'>修改</view>
+  <view class='tab-btn {{tabpage===1?"select-tab":""}}' data-page='1' bindtap='fnSwitchTab'>增加</view>
+  <view class='tab-btn {{tabpage===2?"select-tab":""}}' data-page='2' bindtap='fnSwitchTab'>类型管理</view>
+</view>
+
+<view class='fix-wrapper' hidden='{{tabpage!==0}}'>
+  <view class="section">
+    <view class='title'>问题分类</view>
+    <picker bindchange="fnPickerChange0" value="{{iPickerIndex0}}" range="{{aPickerArray0}}">
+      <view class='content'>
+        {{aPickerArray0[iPickerIndex0]}}
+      </view>
+    </picker>
+  </view>
+  <view class="section">
+    <view class='title'>具体问题</view>
+    <picker bindchange="fnPickerChange1" value="{{iPickerIndex1}}" range="{{aPickerArray1}}">
+      <view class='content'>
+        {{aPickerArray1[iPickerIndex1]}}
+      </view>
+    </picker>
+  </view>
+
+  <view class='text-wrapper'>
+    <textarea maxlength="-1" value='{{sTextValue}}' disabled='{{showFlag}}' bindconfirm="fnEndInput" bindinput="fnEndInput"></textarea>
+  </view>
+  <button bindtap='fnSubmitFix' disabled="{{showFlag}}" class="submit">确定修改并提交</button>
+  <button bindtap='fnSubmitDel' disabled="{{showFlag}}" class="submit" style='margin-top:16px;'>直接删除该条目</button>
+</view>
+
+<!--添加-->
+<view class='add-wrapper' hidden='{{tabpage!==1}}'>
+  <form bindsubmit="formsubmit">
+    <view class="section">
+      <view class='title'>问题分类</view>
+      <picker bindchange="fnPickerChange2" value="{{iPickerIndex2}}" range="{{aPickerArray2}}">
+        <view class='content'>
+          {{aPickerArray2[iPickerIndex2]}}
+        </view>
+      </picker>
+    </view>
+    <view class="section">
+      <view class='title'>具体问题</view>
+
+      <view class='content'>
+        <input style="width:256px;" value='{{value}}' placeholder-class="place" name="question"></input>
+      </view>
+
+    </view>
+    <view class='text-wrapper'>
+      <textarea maxlength="-1" placeholder="解决方案" value='{{addSolution}}' confirm-type='done' bindconfirm="fnGetSolution" bindinput="fnGetSolution"></textarea>
+    </view>
+    <button form-type='submit' class="submit">确认提交</button>
+  </form>
+  <form bindsubmit='fnTypeAdd'>
+    <view class="section">
+      <view class='title'>添加类型</view>
+      <view class='content'>
+        <input style="width:256px;" value='{{addType}}' placeholder-class="place" name="typeAdd"></input>
+      </view>
+    </view>
+    <button form-type='submit' class="submit">确认添加</button>
+  </form>
+</view>
+
+<view class='fix-wrapper' hidden='{{tabpage!==2}}'>
+  <view class="section">
+      <view class='title'>问题分类</view>
+      <picker bindchange="fnPickerChange2" value="{{iPickerIndex2}}" range="{{aPickerArray2}}">
+        <view class='content'>
+          {{aPickerArray2[iPickerIndex2]}}
+        </view>
+      </picker>
+    </view>
+
+  <view class='text-wrapper'>
+    <textarea maxlength="-1" placeholder="" value='{{aPickerArray2[iPickerIndex2]}}' confirm-type='done' bindconfirm="fnGetSolution" bindinput="fnGetnewType"></textarea>
+  </view>
+  <button bindtap='modifyType' class="submit">确定修改并提交</button>
+  <button bindtap='deleteType' class="submit" style='margin-top:16px;'>直接删除该类型</button>
+</view>

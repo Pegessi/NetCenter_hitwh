@@ -1,0 +1,55 @@
+<!--pages/centerOperation/manageAll/index.wxml-->
+<!--pages/functionpages/ziliao.wxml-->
+<view class="tabarr" style="display: flex;flex-direction:row;">
+  <view class="change1" bindtap="change1" style="color:{{color1}};height:100rpx;width:50%;">已上传</view>
+  <view class="change2" bindtap="change2" style="color:{{color2}};height:100rpx;width:50%;">上传资料</view>
+</view>
+
+<view style='padding-top:15rpx;;display:flex;flex-direction:row;position:relative;'>
+  <block wx:if="{{change==1}}">
+    <scroll-view scroll-y="true">
+      <view class="arr_group">
+        <view class="arr_item" wx:for="{{file}}" style="background-color:#fff; background-size: 100% 100%; border-radius:5rpx;height:190rpx;">
+          <image class="note_image" src="/icon/file.png"></image>
+          <view class="arr_information" bindtap='jumpweb' data-flink="{{item.flink}}" data-item="{{item}}">
+            <text style="font-size:35rpx;">{{item.fname}}</text>
+            <text style="color:grey;font-size:30rpx;">提交人: {{item.submitid}}</text>
+          </view>
+          <view class="button_group">
+            <image class="button_image" bindtap='delfile' data-item='{{item}}' data-index="{{index}}" src="/icon/deleteFile.png"></image>
+          </view>
+        </view>
+      </view>
+    </scroll-view>
+  </block>
+
+</view>
+
+  <i-panel wx:if="{{change==2}}">
+    <i-input value="{{ value }}" bind:change="getName" title="资料名称" autofocus placeholder="资料名" />
+    <i-input value="{{ value }}" bind:change="getLink" title="文件名称" placeholder="英文名" />
+
+    <!-- <view class="label-list">
+          <view class="label">通知内容</view>
+        </view> -->
+    <!-- <textarea style='position:relative;margin-top:25rpx; left:35rpx;' maxlength='-1' value='{{value}}' placeholder-class="place" bindinput="content" placeholder='在这里输入相应问题的解决办法' auto-height='true' /> -->
+    <i-input value='{{value}}' bind:change="getContent" type="textarea" title="通知内容" placeholder="在这里输入相应通知"/>
+    <i-button bind:click="submit" type="primary" class="submit">确认提交</i-button>
+  </i-panel>
+    <!-- <view class="form">
+      <form bindsubmit="formsubmit"> -->
+        <!-- <view class="label-list">
+          <view class="label">资料名称</view>
+          <input style='position:relative; left:75rpx;' placeholder="资料名" value='{{value}}' placeholder-class="place" name="fname" />
+        </view>
+        <view class="label-list">
+          <view class="label">文件名称</view>
+          <input style='position:relative; left:75rpx;' placeholder="英文名" value='{{value}}' placeholder-class="place" name="flink" />
+        </view> -->
+
+        <!-- <button class="submit">确认提交</button> -->
+      <!-- </form>
+    </view> -->
+
+
+<i-toast id="toast" />

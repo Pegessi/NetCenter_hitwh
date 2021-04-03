@@ -1,0 +1,12 @@
+<!--pages/questionFunction/getAll/index.wxml-->
+<view wx:for="{{questionTypeList}}" wx:for-item="key" style="margin-top:20rpx;">
+  <i-collapse-item class="caption-title" title="{{key}}">
+    <view slot="content">
+      <i-collapse-item wx:for="{{questionList[key]}}" title="{{item.description}}" name="name1">
+        <view slot="content">
+          <text selectable="true">{{item.solution}}</text>
+        </view>
+      </i-collapse-item>
+    </view>
+  </i-collapse-item>
+</view>

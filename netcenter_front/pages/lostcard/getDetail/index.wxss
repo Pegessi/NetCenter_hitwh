@@ -1,0 +1,30 @@
+/* pages/lostcard/getDetail/index.wxss */
+.content {
+  width: 100%;
+  background-color: #fff;
+}
+.setFont{
+  color:#495060
+}
+.img-wrapper {
+  margin-top: 20rpx;
+  display: flex;
+  flex-direction: row;
+}
+
+.img-item {
+  margin: 10rpx 10rpx;
+}
+
+.img-item image {
+  width: 180rpx;
+  height: 180rpx;
+}
+
+.img-item:first-child {
+  margin-left: 0rpx;
+}
+
+.img-item:last-child {
+  margin-right: 0rpx;
+}

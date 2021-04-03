@@ -1,0 +1,14 @@
+<!--pages/personalmanage/workmanDelete/index.wxml-->
+
+<view class="modify-form">
+  <form bindsubmit="formSubmit">
+
+    <view class="label-list">
+      <view class="label">学工号</view>
+      <input placeholder="请输入院系编号" value='{{id}}'  placeholder-class="place" name='id' bindinput="Identical" />
+
+    </view>
+    <button form-type='submit' class="submit">删除</button>
+  </form>
+
+</view>

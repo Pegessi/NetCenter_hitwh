@@ -1,0 +1,41 @@
+<!--pages/MainInterface/NetCenterIntro.wxml-->
+<view>
+  <van-notice-bar color="#1989fa" background="#ecf9ff" left-icon="info-o" scrollable="{{false}}" text="网络与信息中心 2021">
+  </van-notice-bar>
+  <view class="logoBox" bindtap="recommend">
+    <van-image src="/icon/logobig.png" width="100" height="100"></van-image>
+  </view>
+  <van-panel>
+    <view slot="header">
+      <van-cell title="网络与信息中心" label="简介" size="large">
+        <view slot="right-icon">
+          <!-- <text class="statusText">2020</text> -->
+          <van-icon style="iconBox" name="info-o" size="40rpx"></van-icon>
+        </view>
+      </van-cell>
+    </view>
+    <view class="infoBox">
+      <!-- text标签首行缩进不起作用 view标签可以 -->
+      <view>
+        哈尔滨工业大学（威海）网络中心是直属学校领导的副处级单位，工作职能为负责校园网与信息系统的规划、建设、运行、维护和管理。
+      </view>
+      <view>
+        网络中心成立于2000年，最初办公地点设在C楼四楼，2002年搬迁至主楼八楼，2020年搬迁至图书馆一楼南侧，现已发展为具有一支高素质的技术队伍、健全的运行管理机制、具有良好的机房环境、能提供优质服务的服务性机构。
+      </view>
+      <view>
+        目前网络中心管理着具有4个骨干节点、6000个接入信息点、覆盖90%校区、30多栋大楼的哈工大（威海）校园网络，为师生提供网络信息浏览、信息发布、电子邮件、域名解析、文件下载、视频点播、视频会议、网络课堂等网络服务，并为学校的网络办公系统、财务管理系统、教务综合管理系统、一卡通系统提供良好的网络运行平台。
+      </view>
+    </view>
+    <van-divider contentPosition="left">联系我们</van-divider>
+    <van-cell icon="phone-o" border="{{false}}" title="电话" value="5687702" />
+    <van-cell icon="home-o" border="{{false}}" title="地址" label="图书馆一楼南侧网络与信息中心" />
+  </van-panel>
+  <van-overlay show="{{ show }}" bind:click="onClickHide">
+  <view class="wrapper">
+    <view class="block" catch:tap="noop" >
+      <image style="width:100%; height:100%;" src="/icon/commonUser/qrcode.png"></image>
+      <van-button bindtap="downloadImg" class="store-btn" type="default">保存小程序码</van-button>
+    </view>
+  </view>
+</van-overlay>
+</view>

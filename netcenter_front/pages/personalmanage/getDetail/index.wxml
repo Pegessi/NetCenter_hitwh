@@ -1,0 +1,161 @@
+<!--pages/personalmanage/getDetail/index.wxml-->
+  <view class="containermainview">
+    <view class="arr_group">
+      <view class="arr_item" style="background-color:#fff; background-size: 100% 100%;">
+        <image class="note_image" src="/icon/touxiang.png"></image>
+        <view class="arr_information" data-item='{{item}}'>
+          <text style="font-size:30rpx;">{{item.name}}</text>
+          <text style="color:grey;font-size:25rpx;">学工号:{{item.id}}</text>
+          <text style="color:grey;font-size:25rpx;">联系方式:{{item.phone}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+<view class="tabarr" style="display: flex;flex-direction:row;">
+  <view class="change1" bindtap="change1" style="color:{{color1}};height:100rpx;width:50%;">已接单待完成({{unrepairlistLength}}条)</view>
+  <!-- <view class="change2" bindtap="change2" style="color:{{color2}};height:100rpx;width:33%;">已完成({{repairlistLength}}条)</view> -->
+  <view class="change3" bindtap="change3" style="color:{{color3}};height:100rpx;width:50%;">全部({{allrepairlistLength}}条)</view>
+</view>
+<block wx:if="{{change==1}}">
+  <scroll-view scroll-y="true" class="container" bindscrolltoupper="upper1" upper-threshold="10" lower-threshold="5" bindscrolltolower="lower" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
+    <view style="font-size:40rpx;text-align:center;">
+    </view>
+    <block wx:for="{{unrepairlist}}" wx:for-index="index" wx:for-item="item" data-idx="{{index}}">
+      <view class="feed-item" data-item='{{item}}'>
+        <view class="feed-source">
+          <a class="">
+            <text decode="{{true}}">编号:{{item.tableid}}{{item.failsolution}}时间：{{item.submitdate}}</text>
+          </a>
+        </view>
+        <view class="feed-content" data-item='{{item}}' bindtap='distribute'>
+          <view class="question" qid="{{question_id}}" bindtap="bindQueTap">
+            <a class="question-link">
+              <text decode="{{true}}">故障地点：{{item.repairapartment}}&nbsp;{{item.repairroom}}</text>
+            </a>
+          </view>
+          <view class="question" qid="{{question_id}}" bindtap="bindQueTap">
+            <a class="question-link">
+              <text decode="{{true}}">故障描述：{{item.repairdescription}}</text>
+            </a>
+          </view>
+          <view class="answer-body" bindtap="bindItemTap">
+            <view bindtap="bindItemTap">
+              <text class="answer-txt">报修单状态：{{item.repairstatus}}</text>
+            </view>
+            <!-- <view class="answer-actions" >
+              处理人id:{{item.manageid}}
+            </view> -->
+          </view>
+        </view>
+      </view>
+    </block>
+  </scroll-view>
+</block>
+<!-- <block wx:if="{{change==2}}">
+  <scroll-view scroll-y="true" class="container" bindscrolltoupper="upper1" upper-threshold="10" lower-threshold="5" bindscrolltolower="lower" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
+    <view style="font-size:40rpx;text-align:center;">
+    </view>
+    <block wx:for="{{repairlist}}" wx:for-index="idx" wx:for-item="item" data-idx="{{idx}}">
+      <view class="feed-item" bindtap='detail' data-item='{{item}}'>
+        <view class="feed-source">
+          <a class="">
+            
+            <text decode="{{true}}">编号：{{item.tableid}}&nbsp;&nbsp;&nbsp;报修时间：{{item.submitdate}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</text>
+          </a>
+        </view>
+        <view class="feed-content">
+          <view class="question" qid="{{question_id}}" bindtap="bindQueTap">
+            <a class="question-link">
+              <text decode="{{true}}">故障地点：{{item.repairapartment}}&nbsp;{{item.repairroom}}</text>
+            </a>
+
+          </view>
+          <view class="answer-body">
+            <view bindtap="bindItemTap">
+              <text class="answer-txt">报修单状态：{{item.repairstatus}}</text>
+
+            </view>
+            <view bindtap="bindItemTap">
+              <text class="answer-txt">维修人员回复：{{item.repairreply}}</text>
+            </view>
+            <view class="answer-actions" bindtap="bindItemTap">
+              维修者id:{{item.workmanid}}
+            </view>
+          </view>
+        </view>
+      </view>
+
+    </block>
+  </scroll-view>
+</block> -->
+<block wx:if="{{change==3}}">
+  <scroll-view scroll-y="true" class="container" bindscrolltoupper="upper1" upper-threshold="10" lower-threshold="5" bindscrolltolower="lower" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
+    <view class="page-section">
+      <view class="" style="height:50px;width:100%;font-size:25rpx;">
+        <view class="weui-cell weui-cell_input">
+          <picker mode="date" value="{{date}}" start="2018-05-01" end="{{dates}}" bindchange="bindDateFrom">
+            <view class="picker">
+              {{dateFrom}}
+            </view>
+          </picker>
+          <picker mode="date" value="{{date}}" start="{{dateFrom}}" end="{{dates}}" bindchange="bindDateTo">
+            <view class="picker">
+              {{dateTo}}
+            </view>
+          </picker>
+          <view>
+            <button class="searchButton" bindtap="searchBegin">检索</button>
+          </view>
+        </view>
+      </view>
+    </view>
+    <block wx:for="{{allrepairlist}}" wx:for-index="index" wx:for-item="item" data-idx="{{index}}">
+      <view class="feed-item" data-item='{{item}}'>
+        <view class="feed-source">
+          <a class="">
+            <text decode="{{true}}">编号:{{item.tableid}}{{item.failsolution}}时间：{{item.submitdate}}</text>
+          </a>
+        </view>
+        <view class="feed-content" data-item='{{item}}' bindtap='distribute'>
+          <view class="question" qid="{{question_id}}" bindtap="bindQueTap">
+            <a class="question-link">
+              <text decode="{{true}}">故障地点：{{item.repairapartment}}&nbsp;{{item.repairroom}}</text>
+            </a>
+          </view>
+          <view wx:if="{{item.repairstatus=='待接单'}}" class="question" qid="{{question_id}}" bindtap="bindQueTap">
+            <a class="question-link">
+              <text decode="{{true}}">故障描述：{{item.repairdescription}}</text>
+            </a>
+          </view>
+          <view wx:if="{{item.repairstatus=='待完成'}}" class="question" qid="{{question_id}}" bindtap="bindQueTap">
+            <a class="question-link">
+              <text decode="{{true}}">故障描述：{{item.repairdescription}}</text>
+            </a>
+          </view>
+          <view wx:if="{{item.repairstatus=='已完成'}}" class="question" qid="{{question_id}}" bindtap="bindQueTap">
+            <a class="question-link">
+              <text decode="{{true}}">故障描述：{{item.repairdescription}}</text>
+            </a>
+          </view>
+          <view wx:if="{{item.repairstatus=='未完成'}}" class="question" qid="{{question_id}}" bindtap="bindQueTap">
+            <a class="question-link">
+              <text decode="{{true}}">故障描述：{{item.repairreply}}</text>
+            </a>
+          </view>
+          <view class="answer-body" bindtap="bindItemTap">
+            <view bindtap="bindItemTap">
+              <text class="answer-txt">报修单状态：{{item.repairstatus}}</text>
+            </view>
+            <view bindtap="bindItemTap">
+              <text class="answer-txt">分配时间：{{item.managedate}}</text>
+            </view>
+            <view bindtap="bindItemTap" wx:if="{{item.workdate!=null}}">
+              <text class="answer-txt">完成时间：{{item.workdate}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </block>
+  </scroll-view>
+</block>

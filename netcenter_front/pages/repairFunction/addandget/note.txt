@@ -1,0 +1,87 @@
+  旧版添加报修单页面
+  <view class="container">
+    <view class="page-body">
+      <form bindsubmit="formsubmit" bindreset="formReset" report-submit='true'>
+        <view class="page-section">
+          <view class="weui-cells weui-cells_after-title" style="height:60px;">
+            <view class="weui-cell weui-cell_input">
+              <view class="weui-cell__hd">
+                <view class="weui-label">故障类型</view>
+              </view>
+              <view class="weui-cell__bd">
+                <picker bindchange="WrongType" value="{{index1}}" range="{{array1}}" name="WrongType">
+                  <view class="weui-input">{{array1[wrongtype]}}
+                  </view>
+                </picker>
+              </view>
+              <view style="justify-content:flex-end;">
+                <image style="width: 20rpx; height: 40rpx;" src="/icon/next.png"></image>
+              </view>
+            </view>
+          </view>
+        </view>
+        <view class="page-section">
+          <view class="weui-cells weui-cells_after-title" style="height:60px;">
+            <view class="weui-cell weui-cell_input">
+              <view class="weui-cell__hd">
+                <view class="weui-label">所在区域</view>
+              </view>
+              <view class="weui-cell__bd">
+                <picker bindchange="Area" value="{{areaindex}}" range="{{areas}}" name="Area">
+                  <view class="weui-input">{{areas[areaindex]}}</view>
+                </picker>
+              </view>
+              <view style="justify-content:flex-end;">
+                <image style="width: 20rpx; height: 40rpx;" src="/icon/next.png"></image>
+              </view>
+            </view>
+          </view>
+        </view>
+        <view class="page-section">
+          <view class="weui-cells weui-cells_after-title" style="height:60px;">
+            <view class="weui-cell weui-cell_input">
+              <view class="weui-cell__hd">
+                <view class="weui-label">故障楼名</view>
+              </view>
+              <view class="weui-cell__bd">
+                <picker bindchange="Department" value="{{index1}}" range="{{object}}" name="Department">
+                  <view class="weui-input">{{object[index1]}}</view>
+                </picker>
+              </view>
+              <view style="justify-content:flex-end;">
+                <image style="width: 20rpx; height: 40rpx;" src="/icon/next.png"></image>
+              </view>
+            </view>
+          </view>
+        </view>
+        <view class="page-section">
+          <view class="weui-cells weui-cells_after-title" style="height:60px;">
+            <view class="weui-cell weui-cell_input">
+              <view class="weui-cell__hd">
+                <view class="weui-label">故障房间</view>
+              </view>
+              <view class="weui-cell__bd">
+                <input class="weui-input" value='{{room}}'  type='number'  placeholder="请输入故障房间" maxlength="10" bindinput="RoomNumber" />
+              </view>
+            </view>
+          </view>
+        </view>
+        <view class="page-section">
+          <view class="weui-cells weui-cells_after-title" style="height:60px;">
+            <view class="weui-cell weui-cell_input">
+              <view class="weui-cell__hd">
+                <view class="weui-label">联系方式</view>
+              </view>
+              <view class="weui-cell__bd">
+                <input class="weui-input" value='{{num}}' type='number' placeholder="请输入联系方式" maxlength="11" bindinput="PhoneNumber" />
+              </view>
+            </view>
+          </view>
+        </view>
+        <view class="btn-area" style="justify-content:center;">
+        <!-- form-type='submit  disabled="{{buttonflag}}"-->
+          <button  class="submit" bindtap="onSubscribe">确认提交</button>
+        </view>
+      </form>
+    </view>
+  </view>

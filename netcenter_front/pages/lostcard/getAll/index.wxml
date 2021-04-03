@@ -1,0 +1,73 @@
+<!--pages/lostcard/getAll/index.wxml-->
+<wxs src="../../../utils/timeTranslate.wxs" module="timeTranslate"></wxs>
+<!--搜索框  -->
+<van-search value="{{inputValue}}" bind:search="getbyId" placeholder="请输入搜索关键词" input-align="center" />
+<!-- 导航栏 -->
+<van-grid clickable column-num="2" direction="horizontal">
+  <van-grid-item icon="qr" text="所有信息" bindtap="change1" icon-size="30rpx" />
+  <van-grid-item icon="user-circle-o" text="我发布的" bindtap="change2" icon-size="30rpx" />
+</van-grid>
+<!-- 所有信息 -->
+<view wx:if="{{change==1}}">
+  <block wx:if="{{lostCardList.length==0 || lostCardList==undefined}}">
+    <van-empty image="search" description="暂无信息"></van-empty>
+  </block>
+  <block wx:else>
+    <block wx:for="{{lostCardList}}" wx:for-item="item" wx:for-index="list-index">
+      <crab-card title="{{item.type==0?'失卡'+item.id:'招领'+item.id}}" icon="{{item.type?'icon-shiqu':'icon-zhaoling'}}"
+        full="true" imgstyle="width:auto;height:auto;font-size: 28px;color:#1296DB;" bindtap="fnIdentify"
+        data-item="{{item}}">
+        <view slot="content">
+          <!-- <image wx:if="{{item.picture.length>0}}" src="{{'https://pictures-1257168605.cos.ap-chengdu.myqcloud.com/'+item.picture}}" mode="widthFix" style='width: 100%;height:auto; max-height:240px;'></image> -->
+          <view class="item_content">{{item.description}}</view>
+        </view>
+        <view slot="footer" style='display:flex;justify-content: space-between;'>
+          <!-- <text>寻者：{{item.sender_stuid?item.sender_stuid:"匿名"}}</text> -->
+          <!-- <text>{{timeTranslate.timestampToTime(item.date)}}</text> -->
+          <text>{{'发布时间：'+item.date}}</text>
+        </view>
+      </crab-card>
+    </block>
+  </block>
+</view>
+<!-- 我发布的 -->
+<view wx:if="{{change==2}}">
+  <block wx:if="{{myFlag}}">
+    <van-empty description="暂无信息"></van-empty>
+  </block>
+  <!-- 显示区域 -->
+  <!-- 通过提交者id与个人id匹配进行查找 -->
+  <block wx:else>
+    <block wx:for="{{lostCardList}}" wx:if="{{item.submitid==id}}" wx:for-item="item" wx:for-index="list-index">
+      <crab-card title="{{item.type==0?'失卡'+item.id:'招领'+item.id}}" icon="{{item.type?'icon-shiqu':'icon-zhaoling'}}"
+        full="true" imgstyle="width:auto;height:auto;font-size: 28px;color:#1296DB;" bindtap="fnGoToPageParam"
+        data-item="{{item}}">
+        <view slot="content">
+          <!-- <image wx:if="{{item.picture.length>0}}" src="{{'https://pictures-1257168605.cos.ap-chengdu.myqcloud.com/'+item.picture}}" mode="widthFix" style='width: 100%;height:auto; max-height:240px;'></image> -->
+          <view class="item_content">{{item.description}}</view>
+        </view>
+        <view slot="footer" style='display:flex;justify-content: space-between;'>
+          <!-- <text>寻者：{{item.sender_stuid?item.sender_stuid:"匿名"}}</text> -->
+          <!-- <text>{{timeTranslate.timestampToTime(item.date)}}</text> -->
+          <text>{{'发布时间：'+item.date}}</text>
+        </view>
+      </crab-card>
+    </block>
+  </block>
+
+
+</view>
+<!-- <view hidden="{{!bListEnd[0] && bLoading}}"> -->
+<!-- <i-load-more tip="暂无更多数据" loading="{{ false }}" /> -->
+
+<!-- 认领功能 -->
+<modal hidden="{{hiddenmodalput}}" title="请输入卡号对应姓名" confirm-text="确定" cancel-text="取消" bindcancel="cancel"
+  bindconfirm="confirm">
+  <input bindchange="inputcomment" type='text' placeholder="请输入内容" auto-focus />
+</modal>
+<modal hidden="{{namefalse}}" title="输入错误" confirm-text="确定" cancel-text="取消" bindcancel="cancel2"
+  bindconfirm="cancel2">
+</modal>
+<!--悬浮加号菜单实现  ：_addIssue  和 _buyIssue分别是弹出菜单里面按钮对应的事件，需要在调用的js中实现 -->
+<crab-menu hidden icons="{{['icon-zhaoling','icon-shiqu','icon-wode','icon-hua']}}" id='menu' bind:myIssue="_myIssue"
+  bind:saleIssue="_saleIssue" bind:buyIssue="_buyIssue" />

@@ -1,0 +1,48 @@
+<!--changeInfo.wxml-->
+<wxs src="../../other/common.wxs" module="util" />
+<view class="container">
+  <view class="page-body">
+    <form bindsubmit="formsubmit">
+      <view class="page-section">
+        <view class="weui-cells weui-cells_after-title " style="height:60px;">
+          <view class="weui-cell weui-cell_input ">
+            <view class="weui-cell__hd1">
+              <view class=" weui-label ">姓名</view>
+            </view>
+            <view class="weui-cell__bd ">
+              <input class="weui-input " name="name " bindinput='name' value="{{name}} " />
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="page-section ">
+        <view class="weui-cells weui-cells_after-title " style="height:60px; ">
+          <view class="weui-cell weui-cell_input ">
+            <view class="weui-cell__hd1">
+              <view class="weui-label">学号</view>
+            </view>
+            <view class="weui-cell__bd">
+              <input class="weui-input " name="id" bindinput='id' value="{{id}}" />
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="page-section">
+        <view class="weui-cells weui-cells_after-title " style="height:60px;">
+          <view class="weui-cell weui-cell_input ">
+            <view class="weui-cell__hd1  {{util.validateEmail(email)?'':'error'}}">
+              <view class="weui-label">电子邮箱</view>
+            </view>
+            <view class="weui-cell__bd">
+              <input class="weui-input " placeholder="请输入常用邮箱地址" name="email" bindinput='email' value="{{email}}" />
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="btn-area" style="justify-content:center;">
+        <text decode="{{true}}" class="tip {{util.validateEmail(email)?'':'error'}}" wx:if="{{util.validateEmail(email)?false:true}}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;请输入正确的邮箱地址，相关信息会通过邮箱发送给您哦。</text>
+        <button type="primary" disabled="{{util.validateEmail(email)?false:true}}" formType="submit" style="width:80%;margin-top:20px;background-color:#2287e3;">确认提交</button>
+      </view>
+    </form>
+  </view>
+</view>

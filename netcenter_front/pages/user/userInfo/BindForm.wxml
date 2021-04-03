@@ -1,0 +1,109 @@
+<!--BindForm.wxml-->
+<wxs src="../../other/common.wxs" module="util" />
+<view class="container">
+  <view class="page-body">
+  <!--绑定帐号界面------------------------------------------------------------------------------------------>
+    <form wx:if="{{showFlag==1}}" bindsubmit="formsubmit">
+      <view class="page-section">
+        <view class="weui-cells weui-cells_after-title" style="height:60px;">
+          <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd">
+              <view class="weui-label">学号/职工号</view>
+            </view>
+            <view class="weui-cell__bd">
+              <input class="weui-input" placeholder="请输入学号" type="number" maxlength="10" name="id" bindinput='getID' value="{{info1.id}}" />
+            </view>
+          </view>
+        </view>
+      </view>
+
+      <view class="page-section">
+        <view class="weui-cells weui-cells_after-title" style="height:60px;">
+          <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd">
+              <view class="weui-label">姓名</view>
+            </view>
+            <view class="weui-cell__bd">
+              <input class="weui-input" placeholder="请输入姓名" maxlength="100" bindchange="getname" value="{{info1.name}}" />
+            </view>
+
+          </view>
+        </view>
+      </view>
+      <view class="page-section">
+        <view class="weui-cells weui-cells_after-title " style="height:60px;">
+          <view class="weui-cell weui-cell_input ">
+            <view class="weui-cell__hd1  {{util.validateEmail(email)?'':'error'}}">
+              <view class="weui-label">电子邮箱</view>
+            </view>
+            <view class="weui-cell__bd">
+              <input class="weui-input " placeholder="请输入常用邮箱地址"  name="email" bindinput='email' value="{{email}}" />
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="btn-area" style="justify-content:center;">
+        <text decode="{{true}}" class="tip {{util.validateEmail(email)?'':'error'}}" wx:if="{{util.validateEmail(email)?false:true}}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;请输入正确的邮箱地址，相关信息会通过邮箱发送给您哦。</text>
+        <button type="primary" disabled="{{util.validateEmail(email)?false:true}}" formType="submit" style="width:80%;margin-top:20px;background-color:#2287e3;">确认提交</button>
+      </view>
+    </form> 
+  <!--绑定帐号界面结束------------------------------------------------------------------------------------------------>
+  <!--绑定成功以后的界面---------------------------------------------------------------------------------------------->
+<form wx:if="{{showFlag==2}}">
+      <view class="page-section">
+        <view class="weui-cells weui-cells_after-title" style="height:60px;">
+          <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd">
+              <view class="weui-label">学号/职工号</view>
+            </view>
+            <view class="weui-cell__bd">
+              <text class="weui-input" maxlength="10" name="id">{{info1.id}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+
+      <view class="page-section">
+        <view class="weui-cells weui-cells_after-title" style="height:60px;">
+          <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd">
+              <view class="weui-label">姓名</view>
+            </view>
+            <view class="weui-cell__bd">
+              <text class="weui-input">{{info1.name}}</text>
+            </view>
+
+          </view>
+        </view>
+      </view>
+      <!-- <view class="page-section">
+        <view class="weui-cells weui-cells_after-title" style="height:60px;">
+          <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd">
+              <view class="weui-label">联系方式</view>
+            </view>
+            <view class="weui-cell__bd">
+              <text class="weui-input" name="phone">{{info1.phone}}</text>
+            </view>
+          </view>
+        </view>
+      </view> -->
+      <view class="page-section">
+        <view class="weui-cells weui-cells_after-title" style="height:60px;">
+          <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd">
+              <view class="weui-label">电子邮箱</view>
+            </view>
+            <view class="weui-cell__bd">
+              <text class="weui-input" name="email">{{info1.email}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="btn-area" style="justify-content:center;">
+        <button bindtap='unbind' style="width:80%;margin-top:20px;background-color:#2287e3;color:#FFFFFF">解除绑定</button>
+      </view>
+    </form>
+  <!-- 绑定成功界面结束------------------------------------------------------------------------------------------------->
+  </view>
+</view>

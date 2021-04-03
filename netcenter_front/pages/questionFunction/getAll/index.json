@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "问题指南",
+  "usingComponents": {
+    "i-collapse": "../../component/iview-ui/collapse/index",
+    "i-collapse-item": "../../component/iview-ui/collapse-item/index",
+    "i-sticky": "../../component/iview-ui/sticky/index",
+    "i-sticky-item": "../../component/iview-ui/sticky-item/index"
+  }
+}

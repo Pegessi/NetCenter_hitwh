@@ -1,0 +1,98 @@
+/* pages/MainInterface/MainviewA.wxss */
+page {
+  background-color: #f8f8f9;
+}
+.manageimg{
+width: 90rpx; height: 90rpx;
+}
+.userimg{
+  width:40%; height: 75rpx;
+}
+.change{
+  justify-content: center;
+  border: solid 1px #F5F5F5;
+  display: flex;
+  flex-direction: row;
+  background-color: #ffffff;
+  align-items: center;
+  font-size:35rpx;
+}
+.containermainview {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  width:100%;
+  height:100%;
+  background:src('/static/image/icon/logotou.png');
+  background-size: cover;
+}
+.line{
+margin: 0 auto;
+width: 100%;
+border-top:2px #FFF solid;
+}
+.submit {
+  width: 650rpx;
+  height: 90rpx;
+  margin-top: 35rpx;
+  background-color: #2287e3;
+  color: #fff;
+}
+.text-box {
+  height:90rpx;
+  font-size: 30rpx;
+  color:grey;
+  background-color:#F3F3F3;
+}
+.text{
+  position:relative;
+  top:25rpx;
+  left:25rpx;
+}
+
+.icon-wraptop {
+  width: 25%;
+  height: 188rpx;
+  text-align: center;
+  float:left;
+  margin-top: 20rpx;
+  margin-bottom: 10rpx;
+}
+.icon-wraptop1 {
+  width: 33%;
+  height: 210rpx;
+  text-align: center;
+  float:left;
+  margin-top: 20rpx;
+  margin-bottom: 10rpx;
+}
+.icon-wrap {
+  width: 25%;
+  height: 188rpx;
+  text-align: center;
+  float: left;
+  outline-width: 1px;
+  outline-style: solid;
+  outline-color:#F0F0F0;
+}
+
+.flex-wrp {
+  display: flex;
+}
+.icon-itemtop {
+  margin-top: 20rpx;
+}
+.icon-item {
+  margin-top: 45rpx;
+}
+
+.img-item {
+  width: 45%;
+  height: 35rpx;
+}
+
+.icon-classname {
+  margin-top: 10rpx;
+  font-size: 30rpx;
+  font-weight: 400;
+}

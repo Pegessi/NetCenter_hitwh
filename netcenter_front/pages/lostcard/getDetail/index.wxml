@@ -1,0 +1,20 @@
+<!--pages/lostcard/getDetail/index.wxml-->
+
+<i-cell-group bindlongpress="fnLongTap">
+  <i-input title="学号" value="{{detail.id}}" disabled />
+  <i-input title="姓名" value="{{detail.name}}" disabled />
+  <i-input title="类型" value="{{detail.type==0?'失卡':'招领'}}" disabled/>
+  <i-input title="发布人" value="{{detail.submitid}}" disabled/>
+
+  <i-cell title="联系方式" class="setFont">
+    <view style="padding:30rpx 20rpx;">
+      <view style="display: flex;flex-direction: row;justify-content: space-between;">
+        <text>{{detail.contact}}</text>
+        <text style="color:#2d8cf0;" bindtap="fnCopyContact" data-value="{{detail.contact}}">复制</text>
+      </view>
+    </view>
+  </i-cell>
+
+  <i-cell title="说明" class="setFont"><view style="word-wrap:break-word;width:90vw;">{{detail.description}}</view></i-cell>
+  <i-button wx:if="{{userid==detail.submitid||identity==1}}" bind:click="deleteInfo" type="success" shape="circle" size="small">删除</i-button>
+</i-cell-group>

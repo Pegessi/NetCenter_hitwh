@@ -1,0 +1,62 @@
+/* pages/MainInterface/MainviewB.wxss */
+/* button::after {
+  border: none;
+}
+button {
+  background-color: #fff;
+  border-radius:0;
+  font-size:17px;
+  margin-left: 20rpx;
+  padding-left: 0rpx;
+} */
+.contact,
+.button-hover {
+  background: transparent;
+  color: #000;
+  border: none !important;
+  padding: 0 0;
+  margin: 0 0;
+  text-align: left;
+  line-height: normal;
+  font-size: 17px;
+  display: inline;
+}
+
+.weui-lable1 {
+  word-wrap: break-word;
+  word-break: break-all;
+  width: 540rpx;
+}
+
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 100rpx;
+}
+
+.container {
+  align-items: center;
+  font-size: 32rpx;
+  flex-direction: column;
+  font-family: -apple-system-font, Helvetica Neue, Helvetica, sans-serif;
+}
+
+.userinfo-avatar {
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+
+.userinfo-nickname {
+  color: #aaa;
+}
+
+.picBox {
+  width: 100%;
+  height: 400rpx;
+  position: absolute;
+  top: 0%;
+  z-index: -1;   /*置于底层*/
+}

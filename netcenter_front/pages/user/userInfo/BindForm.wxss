@@ -1,0 +1,19 @@
+/* pages/Other/BindForm.wxss */
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+}
+/* 有效邮箱样式 */
+.weui-cell__hd1{
+  color: #000;
+}
+/* 无效邮箱样式 */
+.weui-cell__hd1.error{
+  color: red;
+}
+.tip.error{
+  color: red;
+}
+

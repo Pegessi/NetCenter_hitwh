@@ -1,0 +1,10 @@
+{
+  "component": true,
+  "usingComponents": {
+    "i-load-more": "../../component/iview-ui/load-more/index",
+    "van-grid":"/miniprogram/miniprogram_npm/@vant/weapp/grid",
+    "van-grid-item":"/miniprogram/miniprogram_npm/@vant/weapp/grid-item"
+  },
+  "enablePullDownRefresh": true,
+  "navigationBarTitleText": "报修管理"
+}

@@ -1,0 +1,15 @@
+<!--pages/repairFunction/personalmanage/workmanAdd/index.wxml-->
+<view class="modify-form">
+  <form bindsubmit="formSubmit">
+
+    <view class="label-list">
+      <view class="label">学工号</view>
+      <input placeholder-class="place" type="number" maxlength="10" name='id' bindinput="Identical" bindchange="Identical" value="{{studyid}}" />
+    </view>
+    <view class="label-list">
+      <view class="label">手机号</view>
+      <input placeholder-class="place" type="number" maxlength="11" name='phone' bindinput="phone" bindchange="phone" value="{{phone}}" />
+    </view>
+    <button form-type='submit' class="submit">添加</button>
+  </form>
+</view>

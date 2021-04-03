@@ -1,0 +1,50 @@
+<!--pages/lostcard/manageAll/index.wxml-->
+<scroll-view scroll-y="true" class="container" bindscrolltoupper="upper1" upper-threshold="10" lower-threshold="5" bindscrolltolower="lower" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
+    <view style="font-size:40rpx;text-align:center;">
+    </view>
+    <block wx:for="{{lostCardList}}" wx:key="*this" wx:for-item="item" data-index="{{index}}">
+      <view class="feed-item" data-item='{{item}}'>
+        <view class="feed-source">
+          <a class="">
+            <view class="avatar">
+              <!--  -->
+              <view icon="{{item.type?'icon-shiqu':'icon-zhaoling'}}"></view>
+            </view>
+            <text decode="{{true}}">编号：{{item.tableid}}&nbsp;&nbsp;&nbsp;&nbsp;发布时间：{{item.date}}</text>
+          </a>
+        </view>
+        <view class="feed-content" data-item='{{item}}' bindtap='distribute'>
+           <view class="question" qid="{{question_id}}" bindtap="bindQueTap">
+            <a class="question-link">
+              <text decode="{{true}}">{{item.type==0?'找卡':'找主人'}}</text>
+            </a>
+          </view>
+          <view class="question" qid="{{question_id}}" bindtap="bindQueTap">
+            <a class="question-link">
+              <text decode="{{true}}">描述：{{item.description}} </text>
+            </a>
+          </view>
+          <view class="answer-body" bindtap="bindItemTap">
+            <view bindtap="bindItemTap" wx:if="{{item.id!=null&&item.id!=''}}">
+              <text class="answer-txt">卡号：{{item.id}}</text>
+            </view>
+            <view bindtap="bindItemTap" wx:if="{{item.name!=null&&item.name!=''}}">
+              <text class="answer-txt">姓名：{{item.name}}</text>
+            </view>
+          </view>
+          <view class="answer-body" bindtap="bindItemTap">
+            <view bindtap="bindItemTap">
+              <text class="answer-txt">发布人：{{item.submitid}}</text>
+            </view>
+            <view bindtap="bindItemTap">
+              <text class="answer-txt">联系方式：{{item.contact}}</text>
+            </view>
+          </view>
+        </view>
+        <view class="button_group" data-index="{{index}}">
+          <image class="button_image" bindtap='delete' data-item='{{item}}' data-index="{{index}}"src="/icon/deleteitem.png"></image>
+        </view>
+      </view>
+
+    </block>
+  </scroll-view>

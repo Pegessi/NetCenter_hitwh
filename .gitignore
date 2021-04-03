@@ -1,0 +1,4 @@
+# Project exclude paths
+/netcenter_front/cloudfunctions/send/node_modules/
+/netcenter_front/cloudfunctions/subscribe/node_modules/
+/netcenter_front/node_modules/

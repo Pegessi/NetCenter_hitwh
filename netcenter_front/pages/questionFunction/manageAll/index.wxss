@@ -1,0 +1,106 @@
+/* pages/questionFunction/manageAll/index.wxss */
+/* tab-button */
+.tab-btn-wrapper{
+  display: flex;
+}
+
+.tab-btn{
+  flex: 1;
+  font-size: 0.9rem;
+  height: 60rpx;
+  line-height: 60rpx;
+  text-align: center;
+  padding: 10rpx 0;
+  background-color: #F6F6F6;
+}
+
+.select-tab{
+  color: #1296db;
+  border-bottom: solid 2px #1296db;
+}
+/* end tab-button */
+
+/* fix module */
+.section{
+  background: white;
+  padding: 12px 4px;
+  margin: 6px 0;
+  display: flex;
+  font-size: 0.9rem;
+}
+.title{
+  flex: 3;
+  
+  font-size:35rpx;
+}
+picker{
+  flex: 7;
+}
+
+.text-wrapper{
+  width: 100%;
+  font-size: 0.9rem;
+  padding: 16px 0;
+  background: white;
+  display: flex;
+  justify-content: center;
+}
+textarea{
+  width: 94%;
+  padding: 4px 4px;
+  border-radius: 4px;
+}
+/* end fix */
+
+.form {
+  position: relative;
+  margin: 10rpx;
+  background-color: #fff;
+}
+
+.label-list {
+  position: relative;
+  top:20rpx;
+  padding-left: 50rpx;
+  padding-right: 10rpx;
+  display: flex;
+  height: 70rpx;
+  align-items: center;
+  border-bottom: 1px solid #e8e8e8;
+  margin-right: 10rpx;
+  width: 668rpx;
+}
+
+.label {
+  font-size:40rpx;
+  font-weight: 300;
+}
+
+.place {
+  left: 5rpx;
+  display: flex;
+  align-items: center;
+  font-size: 35rpx;
+}
+
+.submit {
+  position: relative;
+  background-color: #1296db;
+  color: #fff;
+  width: 85%;
+  margin-top: 40rpx;
+}
+.button_group {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  left: 170rpx;
+  top: 10rpx;
+}
+
+.button_image {
+  position: relative;
+  margin: 15rpx;
+  width: 40rpx;
+  height: 40rpx;
+}

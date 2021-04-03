@@ -1,0 +1,70 @@
+{
+  "pages": [
+    "pages/tabBar/mainviewA/MainviewA",
+    "pages/user/userInstruction/index",
+    "pages/tabBar/mainviewB/MainviewB",
+    "pages/questionFunction/manageAll/index",
+    "pages/tabBar/mainviewC/NetCenterIntro",
+    "pages/repairFunction/distributerepair/index",
+    "pages/personalmanage/test/index",
+    "pages/lostcard/manageAll/index",
+    "pages/questionFunction/getAll/index",
+    "pages/personalmanage/getDetail/index",
+    "pages/personalmanage/workmanDelete/index",
+    "pages/personalmanage/workmanAdd/index",
+    "pages/personalmanage/getAll/index",
+    "pages/lostcard/addlostcard/index",
+    "pages/repairFunction/workrepair/index",
+    "pages/repairFunction/managerepair/index",
+    "pages/centerOperation/installFile/index",
+    "pages/centerOperation/getAll/index",
+    "pages/centerOperation/manageAll/index",
+    "pages/repairFunction/addandget/index",
+    "pages/user/userUpdate/changeInfo",
+    "pages/lostcard/getAll/index",
+    "pages/logs/logs",
+    "pages/user/userInfo/BindForm",
+    "pages/lostcard/getDetail/index",
+    "pages/repairFunction/getworkman/index",
+    "pages/lostcard/searchResult/index",
+    "pages/navigate/Page1/Page1",
+    "pages/navigate/Page2/Page2",
+    "pages/navigate/Page3/Page3",
+    "pages/webViewEntry/index"
+  ],
+  "window": {
+    "backgroundColor": "#F6F6F6",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#F6F6F6",
+    "navigationBarTitleText": "123",
+    "navigationBarTextStyle": "black"
+  },
+  "sitemapLocation": "sitemap.json",
+  "tabBar": {
+    "color": "#CFCFCF",
+    "selectedColor": "#2287e3",
+    "borderStyle": "white",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/tabBar/mainviewA/MainviewA",
+        "text": "服务大厅",
+        "iconPath": "/icon/viewA.png",
+        "selectedIconPath": "/icon/viewAtaped.png"
+      },
+      {
+        "pagePath": "pages/tabBar/mainviewC/NetCenterIntro",
+        "text": "网络中心",
+        "iconPath": "/icon/logo_.png",
+        "selectedIconPath": "/icon/logo.png",
+        "position": "top"
+      },
+      {
+        "pagePath": "pages/tabBar/mainviewB/MainviewB",
+        "text": "个人中心",
+        "iconPath": "/icon/viewB.png",
+        "selectedIconPath": "/icon/viewBtaped.png"
+      }
+    ]
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "component": true,
+  "usingComponents": {
+    "crab-menu": "../../component/crab-ui/menu/index",
+    "crab-card": "../../component/crab-ui/card/index",
+    "i-cell": "../../component/iview-ui/cell/index",
+    "i-modal": "../../component/iview-ui/modal/index",
+    "i-cell-group": "../../component/iview-ui/cell-group/index",
+    "i-load-more": "../../component/iview-ui/load-more/index"
+  },
+  "navigationBarTitleText": "一卡通搜索",
+  "navigationBarBackgroundColor": "#f8f8f9",
+  "navigationBarTextStyle": "black"
+}

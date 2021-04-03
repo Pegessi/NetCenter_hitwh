@@ -1,0 +1,110 @@
+<view>
+  <view>
+    <!--管理员身份：可以处理报修（增加删除报修单，给保修单分配维修人员）人员管理（搜索人员身份更改用户身份）中心事务（可以给中心事务添加新的内容）问题记录（记录用户常见的问题，方便添加到之后的问题集合里面）  -->
+    <block class="containermainview" wx:if="{{info.identity==1}}">
+      <view class="btn_area">
+        <button class="submit" bindtap="gotoPage1">管理员界面</button>
+        <button class="submit" bindtap="gotoPage2">维修员界面</button>
+        <button class="submit" bindtap="gotoPage3">普通用户界面</button>
+      </view>
+    </block>
+    <!--维修人员身份 处理报修（维修人员处理报修并给出反馈) 问题记录（维修人员记录报修中出现的问题)  -->
+    <block class="containermainview" wx:elif="{{info.identity==2}}">
+      <!--维修人员界面 -->
+<view>
+  <!-- 上方功能区 -->
+  <view class="scroll_box">
+    <scroll-view scroll-x style="width: 100%; white-space: nowrap; display: flex;">
+      <van-grid-item custom-class="item_plus" icon-class="icon-custom" text-class="icon-text"
+        icon="/icon/index/centerAffair.png" text="中心事务" url="/pages/centerOperation/getAll/index" />
+      <van-grid-item custom-class="item_plus" text-class="icon-text" icon="/icon/index/questionGuide.png" text="问题指南"
+        url="/pages/questionFunction/getAll/index" />
+      <van-grid-item custom-class="item_plus" text-class="icon-text" icon="/icon/index/netDeal.png" text="报修处理"
+        url="/pages/repairFunction/workrepair/index" />
+      <van-grid-item custom-class="item_plus" text-class="icon-text" icon="/icon/index/netRepair.png" text="网络报修"
+        url="/pages/repairFunction/addandget/index" />
+      <van-grid-item custom-class="item_plus" text-class="icon-text" icon="/icon/index/lostCard.png" text="失卡招领"
+        url="/pages/lostcard/getAll/index" />
+      <!-- 诡异的终结点 -->
+      <van-grid-item class="end_plus" text-class="icon-text" icon="/icon/index/lostCard.png" text="失卡招领"
+        url="/pages/lostcard/getAll/index" />
+    </scroll-view>
+  </view>
+  <!-- 每日推送区 -->
+  <van-panel title="每日推送" header-class="bar-text">
+    <swiper indicator-dots="{{indicatorDots}}" indicator-active-color="#2488E3" indicator-color="#F0FFF0"
+      autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" style="height: 360rpx;">
+      <!-- wx:key的作用是唯一的标识列表中的元素 -->
+      <block wx:for="{{imgList}}">
+        <swiper-item class="swiper-custom" bindtap="routeArticle" data-link="{{item.link}}">
+          <image src="{{item.imgurl}}" class="swiper-image"></image>
+          <!-- <view class="textBar">111</view> -->
+        </swiper-item>
+      </block>
+    </swiper>
+  </van-panel>
+  <!-- 公告栏区域 -->
+  <van-cell title="校园公告" title-class="bar-text">
+    <view slot="right-icon" class="more-btn">
+      <van-button round plain type="info" bindtap="routeOfficial" size="mini">More</van-button>
+    </view>
+  </van-cell>
+  <block wx:for="{{noticeList}}">
+    <van-cell>
+      <view slot="title" class="notice-box">
+        <text class="title-text" data-link="{{item.link}}" bindtap="routeWebView">{{item.title}}</text>
+        <text class="time-text">{{item.date}}</text>
+      </view>
+    </van-cell>
+  </block>
+</view>
+    </block>
+    <!--普通用户 报修 报卡-->
+    <block wx:else>
+      <!--普通用户界面 -->
+      <view>
+        <!-- 上方功能区 -->
+        <van-grid clickable :column-num="4">
+          <van-grid-item text-class="icon-text" icon="/icon/index/centerAffair.png" text="中心事务"
+            url="/pages/centerOperation/getAll/index" />
+          <van-grid-item text-class="icon-text" icon="/icon/index/questionGuide.png" text="问题指南"
+            url="/pages/questionFunction/getAll/index" />
+          <van-grid-item text-class="icon-text" icon="/icon/index/lostCard.png" text="失卡招领"
+            url="/pages/lostcard/getAll/index" />
+          <van-grid-item text-class="icon-text" icon="/icon/index/netRepair.png" text="网络报修"
+            url="/pages/repairFunction/addandget/index" />
+        </van-grid>
+        <!-- 每日推送区 -->
+        <van-panel title="每日推送" header-class="bar-text">
+          <swiper indicator-dots="{{indicatorDots}}" indicator-active-color="#2488E3" indicator-color="#F0FFF0"
+            autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" style="height: 360rpx;">
+            <!-- wx:key的作用是唯一的标识列表中的元素 -->
+            <block wx:for="{{imgList}}">
+              <swiper-item class="swiper-custom" bindtap="routeArticle" data-link="{{item.link}}">
+                <image src="{{item.imgurl}}" class="swiper-image"></image>
+                <!-- <view class="textBar">111</view> -->
+              </swiper-item>
+            </block>
+          </swiper>
+        </van-panel>
+        <!-- 公告栏区域 -->
+        <van-cell title="校园公告" title-class="bar-text">
+          <view slot="right-icon" class="more-btn">
+            <van-button round plain type="info" bindtap="routeOfficial" size="mini">More</van-button>
+          </view>
+        </van-cell>
+        <block wx:for="{{noticeList}}">
+          <van-cell>
+            <view slot="title" class="notice-box">
+              <text class="title-text" data-link="{{item.link}}" bindtap="routeWebView">{{item.title}}</text>
+              <text class="time-text">{{item.date}}</text>
+            </view>
+          </van-cell>
+        </block>
+      </view>
+    </block>
+
+  </view>
+
+</view>
+<i-toast id="toast" />

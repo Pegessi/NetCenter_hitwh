@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "中心事务",
+  "usingComponents": {
+    "i-toast": "../../component/iview-ui/toast/index",
+    "i-input": "../../component/iview-ui/input/index",
+    "i-button": "../../component/iview-ui/button/index",
+    "i-panel": "../../component/iview-ui/panel/index"
+  }
+}

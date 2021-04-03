@@ -1,0 +1,38 @@
+<!--pages/repairFunction/getworkman/index.wxml-->
+<scroll-view scroll-y="true" class="container" bindscrolltoupper="upper1" upper-threshold="10" lower-threshold="5" bindscrolltolower="lower" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
+<block wx:if="{{repairlist.length==0}}">
+<text style="font-size: 40rpx;margin-left:100rpx;">该维修人员目前暂无任务哦~</text>
+</block>
+  <block wx:for="{{repairlist}}" wx:for-index="index" wx:for-item="item" data-idx="{{index}}">
+    <view class="feed-item">
+      <view class="feed-source">
+          <a class="">
+            <!-- <view class="avatar">
+              <image class="note_image" src="../../static/image/icon/touxiang.png"></image>
+            </view> -->
+            <text decode="{{true}}">编号:{{item.tableid}}{{item.failSolution}} &nbsp;&nbsp;报修时间：{{item.submitdate}}</text>
+          </a>
+        </view>
+        <view class="feed-content" data-item='{{item}}' bindtap='distribute'>
+          <view class="question" qid="{{question_id}}" bindtap="bindQueTap">
+            <a class="question-link">
+              <text decode="{{true}}">故障地点：{{item.repairapartment}}&nbsp;&nbsp;房间号：{{item.repairroom}}</text>
+            </a>
+          </view>
+          <view class="question" qid="{{question_id}}" bindtap="bindQueTap">
+            <a class="question-link">
+              <text decode="{{true}}">故障描述：{{item.repairdescription}}</text>
+            </a>
+          </view>
+          <view class="answer-body" bindtap="bindItemTap">
+            <view bindtap="bindItemTap">
+              <text class="answer-txt">报修单状态：{{item.repairstatus}}</text>
+            </view>
+            <view bindtap="bindItemTap">
+              <text class="answer-txt">报修人学号：{{item.submitid}}</text>
+            </view>
+          </view>
+        </view>
+    </view>
+  </block>
+</scroll-view>

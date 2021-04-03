@@ -1,0 +1,15 @@
+<!--miniprogram/pages/components/uploadPic/uploadPic.wxml-->
+<view class='content'>
+  <view class='img-box'>
+    <view class='img-list'>
+      <view class='img-item' wx:for="{{detailLocalPics}}" data-id="{{index}}" bindtap='previewImage' bindlongpress="bindlongpressimg">
+        <image src='{{item.path}}' mode="widthFix" />
+      </view>
+      <view class='chooseimg' bindtap='uploadDetailImage' wx:if="{{detailLocalPics.length<1}}">
+        <view class="weui-uploader__input-box"></view>
+      </view>
+    </view>
+    <view class='tips'>长按对应的图片即可删除</view>
+  </view>
+</view>
+<canvas style="display:none;" canvas-id="attendCanvasId" />

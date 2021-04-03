@@ -1,0 +1,4 @@
+/* pages/questionFunction/getAll/index.wxss */
+Page {
+  background: #F6F6F6;
+}

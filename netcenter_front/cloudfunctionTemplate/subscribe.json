@@ -1,0 +1,19 @@
+[
+  {
+    "name": "send_test",
+    "value": {
+      "touser": "ocw7r4mGGMRtV6CsHxQrH3ar-HYA",
+      "page": "index",
+      "data": {
+        "id": 2,
+        "thing1": {
+          "value": "2_a"
+        },
+        "thing2": {
+          "value": "2_b"
+        }
+      },
+      "templateId": "ZZ1_TuspIcK5RabD94WP2C_15uh-_tGhDPR932AoFAg"
+    }
+  }
+]

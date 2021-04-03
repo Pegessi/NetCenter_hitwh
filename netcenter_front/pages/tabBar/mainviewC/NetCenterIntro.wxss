@@ -1,0 +1,35 @@
+/* pages/MainInterface/NetCenterIntro.wxss */
+.logoBox{
+  display: flex;
+  justify-content: center;
+  padding-bottom: 20rpx;
+  padding-top: 20rpx;
+}
+.iconBox{
+  padding-top: 30rpx;
+}
+.infoBox{
+  padding-left: 30rpx; 
+  padding-right: 30rpx; 
+  font-size: 28rpx;
+  text-indent: 2em;
+}
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.block {
+  width: 200px;
+  height: 200px;
+  /* background-color: #fff; */
+}
+
+.store-btn{
+  display: flex;
+  position: relative;
+  justify-content: center;
+}

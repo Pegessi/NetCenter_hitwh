@@ -1,0 +1,36 @@
+<view>
+  <view class="containermainview">
+    <!--管理员身份：可以处理报修（增加删除报修单，给保修单分配维修人员）人员管理（搜索人员身份更改用户身份）中心事务（可以给中心事务添加新的内容）问题记录（记录用户常见的问题，方便添加到之后的问题集合里面）  -->
+    <block>
+      <!-- <label style="background-color:#fff">管理人员</label> -->
+      <van-cell icon='user-o' title='管理人员界面' size='large'></van-cell>
+      <view class="flex-wrp" style="flex-direction:row;">
+        <navigator wx:for="{{manageList1}}" class="icon-wraptop1" url="{{item.url}}">
+          <view class="icon-itemtop">
+            <image class="manageimg" src="{{item.picsrc}}"></image>
+          </view>
+          <view class="icon-classname">{{item.name}}</view>
+        </navigator>
+      </view>
+      <view class="flex-wrp" style="flex-direction:row;">
+        <navigator wx:for="{{manageList2}}" class="icon-wraptop1" url="{{item.url}}">
+          <view class="icon-itemtop">
+            <image class="manageimg" src="{{item.picsrc}}"></image>
+          </view>
+          <view class="icon-classname">{{item.name}}</view>
+        </navigator>
+      </view>
+      <view class="flex-wrp" style="flex-direction:row;">
+        <navigator class="icon-wraptop1" url="/pages/lostcard/getAll/index">
+          <view class="icon-itemtop">
+            <image style="width: 80rpx; height:80rpx;" src="/icon/modify.png"></image>
+          </view>
+          <view class="icon-classname">失卡招领</view>
+        </navigator>
+      </view>
+    </block>
+
+  </view>
+
+</view>
+<i-toast id="toast" />

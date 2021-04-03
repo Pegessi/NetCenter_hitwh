@@ -1,0 +1,36 @@
+<!--pages/repairFunction/personalmanage/getAll/index.wxml-->
+<view>
+  <view class="containermainview">
+
+    <view class="flex-wrp" style="flex-direction:row;">
+      <navigator class="icon-wraptop" url="../workmanAdd/index">
+        <view class="icon-itemtop">
+          <image style="width: 55rpx; height: 55rpx;" src="/icon/addpersonal.png"></image>
+        </view>
+        <!-- <view class="icon-classname">增加维修人员</view> -->
+      </navigator>
+
+      <navigator class="icon-wraptop" url="../workmanDelete/index">
+        <view class="icon-itemtop">
+          <image style="width: 60rpx; height: 60rpx;" src="/icon/delpersonal.png"></image>
+        </view>
+        <!-- <view class="icon-classname">删除报修</view> -->
+      </navigator>
+
+    </view>
+    <view class="arr_group">
+      <view class="arr_item" wx:for="{{serviceman}}" wx:for-item="item" wx:key="*this" data-index="{{index}}" style="background-color:#fff; background-size: 100% 100%;">
+        <image class="note_image"  src="/icon/touxiang.png"></image>
+        <view class="arr_information"  data-item='{{item}}'>
+          <text style="font-size:30rpx;">{{item.name}}</text>
+          <text style="color:grey;font-size:25rpx;">学工号:{{item.id}}</text>
+          <text style="color:grey;font-size:25rpx;">联系方式:{{item.phone}}</text>
+        </view>
+        <view class="button_group">
+          <image class="button_image" bindtap='change' data-item='{{item}}' data-index="{{index}}" src="/icon/gengaishenfen.png"></image>
+          <image class="button_image1" bindtap='check' data-item='{{item}}' data-index="{{index}}" src="/icon/chazhaobaoxiu.png"></image>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

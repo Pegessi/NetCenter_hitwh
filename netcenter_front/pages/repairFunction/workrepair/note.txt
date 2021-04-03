@@ -1,0 +1,37 @@
+旧版页面
+<view>
+  <view class="containermainview">
+    <!--维修人员身份 处理报修（维修人员处理报修并给出反馈) 问题记录（维修人员记录报修中出现的问题)  -->
+    <block>
+      <!-- <label style="margin-top:20rpx;margin-left:40rpx;margin-bottom:30rpx;color:#AAAAAA"> {{info.id+' '+info.name}}</label> -->
+      <van-cell icon='user-o' title='维修人员界面' size='large'></van-cell>
+      <view class="flex-wrp" style="flex-direction:row;">
+        <navigator wx:for="{{workList}}" class="icon-wraptop1" url="{{item.url}}">
+          <view class="icon-itemtop">
+            <image class="manageimg" src="{{item.picsrc}}"></image>
+          </view>
+          <view class="icon-classname">{{item.name}}</view>
+        </navigator>
+      </view>
+      <view class="flex-wrp" style="flex-direction:row;">
+        <navigator class="icon-wraptop1" url="/pages/repairFunction/addandget/index">
+          <view class="icon-itemtop">
+            <image class="manageimg" src="/icon/yewu.png"></image>
+          </view>
+          <view class="icon-classname">网络报修</view>
+        </navigator>
+        <navigator class="icon-wraptop1" url="/pages/lostcard/getAll/index">
+          <view class="icon-itemtop">
+            <image class="manageimg" src="/icon/ssearch.png"></image>
+          </view>
+          <view class="icon-classname">失卡招领</view>
+        </navigator>
+      </view>
+      <!-- -----------------------publicservice over --------------------------------------------------------->
+    </block>
+
+
+  </view>
+
+</view>
+<i-toast id="toast" />

@@ -1,0 +1,18 @@
+{
+  "usingComponents": {
+    "crab-uploadpic": "../../component/crab-ui/uploadpic/index",
+    "i-input": "../../component/iview-ui/input/index",
+    "i-radio": "../../component/iview-ui/radio/index",
+    "i-radio-group": "../../component/iview-ui/radio-group/index",
+    "i-panel": "../../component/iview-ui/panel/index",
+    "i-cell": "../../component/iview-ui/cell/index",
+    "i-switch": "../../component/iview-ui/switch/index",
+    "i-message": "../../component/iview-ui/message/index",
+    "i-toast": "../../component/iview-ui/toast/index",
+    "i-button": "../../component/iview-ui/button/index"
+  },
+  "navigationBarTitleText": "发布信息",
+  "navigationBarBackgroundColor": "#f8f8f9",
+  "navigationBarTextStyle": "black",
+  "backgroundColor": "#f8f8f9"
+}

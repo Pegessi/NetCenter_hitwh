@@ -1,0 +1,20 @@
+<!--pages/lostcard/searchResult/index.wxml-->
+<block wx:for="{{lostCardList}}" wx:for-item="item" wx:for-index="list-index">
+  <crab-card title="{{item.type==0?'失卡'+item.id:'招领'+item.id}}" icon="{{item.type?'icon-shiqu':'icon-zhaoling'}}" full="true" imgstyle="width:auto;height:auto;font-size: 28px;color:#1296DB;" bindtap="fnIdentify" data-item="{{item}}">
+    <view slot="content">
+      <!-- <image wx:if="{{item.picture.length>0}}" src="{{'https://pictures-1257168605.cos.ap-chengdu.myqcloud.com/'+item.picture}}" mode="widthFix" style='width: 100%;height:auto; max-height:240px;'></image> -->
+      <view class="item_content">{{item.description}}</view>
+    </view>
+    <view slot="footer" style='display:flex;justify-content: space-between;'>
+      <!-- <text>寻者：{{item.sender_stuid?item.sender_stuid:"匿名"}}</text> -->
+      <!-- <text>{{timeTranslate.timestampToTime(item.date)}}</text> -->
+      <text>{{'发布时间：'+item.date}}</text>
+    </view>
+  </crab-card>
+</block>
+<i-load-more tip="暂无更多数据" loading="{{ false }}" />
+<modal hidden="{{hiddenmodalput}}" title="请输入卡号对应姓名" confirm-text="确定" cancel-text="取消" bindcancel="cancel" bindconfirm="confirm">
+  <input bindchange="inputcomment" type='text' placeholder="请输入内容" auto-focus/>
+</modal>
+<modal hidden="{{namefalse}}" title="输入错误" confirm-text="确定" cancel-text="取消" bindcancel="cancel2" bindconfirm="cancel2">
+</modal>

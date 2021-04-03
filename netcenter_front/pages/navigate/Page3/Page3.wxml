@@ -1,0 +1,42 @@
+<!--pages/home/home.wxml-->
+<!--普通用户界面 -->
+<view>
+  <!-- 上方功能区 -->
+  <van-grid clickable :column-num="4">
+    <van-grid-item text-class="icon-text" icon="/icon/index/centerAffair.png" text="中心事务"
+      url="/pages/centerOperation/getAll/index" />
+    <van-grid-item text-class="icon-text" icon="/icon/index/questionGuide.png" text="问题指南"
+      url="/pages/questionFunction/getAll/index" />
+    <van-grid-item text-class="icon-text" icon="/icon/index/lostCard.png" text="失卡招领"
+      url="/pages/lostcard/getAll/index" />
+    <van-grid-item text-class="icon-text" icon="/icon/index/netRepair.png" text="网络报修"
+      url="/pages/repairFunction/addandget/index" />
+  </van-grid>
+  <!-- 每日推送区 -->
+  <van-panel title="每日推送" header-class="bar-text">
+    <swiper indicator-dots="{{indicatorDots}}" indicator-active-color="#2488E3" indicator-color="#F0FFF0"
+      autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" style="height: 360rpx;">
+      <!-- wx:key的作用是唯一的标识列表中的元素 -->
+      <block wx:for="{{imgList}}">
+        <swiper-item class="swiper-custom" bindtap="routeArticle" data-link="{{item.link}}">
+          <image src="{{item.imgurl}}" class="swiper-image"></image>
+          <!-- <view class="textBar">111</view> -->
+        </swiper-item>
+      </block>
+    </swiper>
+  </van-panel>
+  <!-- 公告栏区域 -->
+  <van-cell title="校园公告" title-class="bar-text">
+    <view slot="right-icon" class="more-btn">
+      <van-button round plain type="info" bindtap="routeOfficial" size="mini">More</van-button>
+    </view>
+  </van-cell>
+  <block wx:for="{{noticeList}}">
+    <van-cell>
+      <view slot="title" class="notice-box">
+        <text class="title-text" data-link="{{item.link}}" bindtap="routeWebView">{{item.title}}</text>
+        <text class="time-text">{{item.date}}</text>
+      </view>
+    </van-cell>
+  </block>
+</view>

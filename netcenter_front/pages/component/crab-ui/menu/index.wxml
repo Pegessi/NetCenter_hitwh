@@ -1,0 +1,16 @@
+<!--miniprogram/pages/menu/menu.wxml-->
+<view class="drawer_screen" bindtap="showOrHide" wx:if="{{isShow}}" catchtouchmove="myCatchTouch"></view>
+<view>
+  <view class='buttom' animation="{{animBuy}}" bindtap="buy">
+    <text class="iconfont {{icons[0]}}"></text>
+  </view>
+  <view class='buttom' animation="{{animSale}}" bindtap="sale">
+    <text class="iconfont {{icons[1]}}"></text>
+  </view>
+  <!-- <view class='buttom' animation="{{animMy}}" bindtap="my">
+    <text class="iconfont {{icons[2]}}"></text>
+  </view> -->
+  <view class='buttom' animation="{{animMain}}" bindtap="showOrHide">
+    <text class="iconfont {{icons[3]}}"></text>
+  </view>
+</view>

@@ -1,0 +1,9 @@
+{
+    "component": true,
+    "usingComponents":
+    {
+        "i-cell": "../../iview-ui/cell/index",
+        "i-row": "../../iview-ui/row/index",
+        "i-col": "../../iview-ui/col/index"
+    }
+}

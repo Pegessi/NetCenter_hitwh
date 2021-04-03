@@ -1,0 +1,14 @@
+{
+  "usingComponents": {
+    "van-image": "/miniprogram/miniprogram_npm/@vant/weapp/image",
+    "van-notice-bar": "/miniprogram/miniprogram_npm/@vant/weapp/notice-bar",
+    "van-panel":"/miniprogram/miniprogram_npm/@vant/weapp/panel",
+    "van-button":"/miniprogram/miniprogram_npm/@vant/weapp/button",
+    "van-cell":"/miniprogram/miniprogram_npm/@vant/weapp/cell",
+    "van-cell-group":"/miniprogram/miniprogram_npm/@vant/weapp/cell-group",
+    "van-icon":"/miniprogram/miniprogram_npm/@vant/weapp/icon",
+    "van-divider":"/miniprogram/miniprogram_npm/@vant/weapp/divider",
+    "van-overlay":"/miniprogram/miniprogram_npm/@vant/weapp/overlay"
+  },
+  "navigationBarTitleText": "网络中心"
+}

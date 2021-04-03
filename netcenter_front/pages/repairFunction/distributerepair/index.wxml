@@ -1,0 +1,20 @@
+<!--pages/repairFunction/distributerepair/index.wxml-->
+<view class="arr_group">
+  <view style="font-size:40rpx;text-align:center;margin-bottom:20rpx;">
+    <!-- <text>有以下维修人员可分配哦~</text> -->
+  </view>
+  <view class="arr_item" wx:for="{{serviceman}}" style="background-color:#fff; background-size: 100% 100%;">
+    <image class="note_image" src="/icon/touxiang.png"></image>
+    <view class="arr_information" data-item='{{item}}'>
+      <text style="font-size:30rpx;">{{item.name}}</text>
+      <text style="color:grey;font-size:25rpx;">学工号:{{item.id}}</text>
+      <text style="color:grey;font-size:25rpx;">联系方式:{{item.phone}}</text>
+    </view>
+    <view class="button_group">
+      <form bindsubmit="formsubmit" report-submit='true'>
+        <image class="button_image" bindtap='addrepair' data-item='{{item}}' src="/icon/distribute.png"></image>
+      </form>
+      <image class="button_image1" bindtap='check' data-item='{{item}}' src="/icon/see.png"></image>
+    </view>
+  </view>
+</view>

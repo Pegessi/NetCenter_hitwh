@@ -1,0 +1,16 @@
+<view class="i-class i-checkbox" catchtap="checkboxChange">
+    <i-cell i-class="i-checkbox-cell">
+        <label>
+            <i-row>
+                <i-col span="4" i-class="col-class">
+                    <radio value="{{value}}" checked="{{checked}}" color="{{checked?color:''}}" disabled="{{disabled}}" class="i-checkbox-radio i-checkbox-checkbox-left" />
+                </i-col>
+                <i-col span="5" i-class="col-class" style="word-wrap:break-word;">{{valuecNo}}</i-col>
+                <i-col span="5" i-class="col-class">{{valuecName}}</i-col>
+                <i-col span="3" i-class="col-class">{{valuecScore}}</i-col>
+                <i-col span="3" i-class="col-class">{{valuecCredit}}</i-col>
+                <i-col span="4" i-class="col-class">{{valuecTypeB}}</i-col>
+            </i-row>
+        </label>
+    </i-cell>
+</view>

@@ -1,0 +1,190 @@
+/* pages/MainInterface/MainviewA.wxss */
+page {
+  background-color: #f8f8f9;
+}
+/* .manageimg{
+width: 90rpx; height: 90rpx;
+}
+.userimg{
+  width:40%; height: 75rpx;
+}
+.change{
+  justify-content: center;
+  border: solid 1px #F5F5F5;
+  display: flex;
+  flex-direction: row;
+  background-color: #ffffff;
+  align-items: center;
+  font-size:35rpx;
+}
+.containermainview {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  width:100%;
+  height:100%;
+  background:src('/static/image/icon/logotou.png');
+  background-size: cover;
+}
+.line{
+margin: 0 auto;
+width: 100%;
+border-top:2px #FFF solid;
+}
+.submit {
+  width: 650rpx;
+  height: 90rpx;
+  margin-top: 35rpx;
+  background-color: #2287e3;
+  color: #fff;
+}
+.text-box {
+  height:90rpx;
+  font-size: 30rpx;
+  color:grey;
+  background-color:#F3F3F3;
+}
+.text{
+  position:relative;
+  top:25rpx;
+  left:25rpx;
+}
+
+.icon-wraptop {
+  width: 25%;
+  height: 188rpx;
+  text-align: center;
+  float:left;
+  margin-top: 20rpx;
+  margin-bottom: 10rpx;
+}
+.icon-wraptop1 {
+  width: 33%;
+  height: 210rpx;
+  text-align: center;
+  float:left;
+  margin-top: 20rpx;
+  margin-bottom: 10rpx;
+}
+.icon-wrap {
+  width: 25%;
+  height: 188rpx;
+  text-align: center;
+  float: left;
+  outline-width: 1px;
+  outline-style: solid;
+  outline-color:#F0F0F0;
+}
+
+.flex-wrp {
+  display: flex;
+}
+.icon-itemtop {
+  margin-top: 20rpx;
+}
+.icon-item {
+  margin-top: 45rpx;
+}
+
+.img-item {
+  width: 45%;
+  height: 35rpx;
+}
+
+.icon-classname {
+  margin-top: 10rpx;
+  font-size: 30rpx;
+  font-weight: 400;
+} */
+
+.repairTitle{
+  display: flex;
+  justify-content: center;
+}
+.swiper-image {
+  height: 100%;
+  width: 100%;
+  opacity:0.9;
+  position: relative;
+  z-index: -1;
+}
+.textBar{
+  position: absolute;
+  width: 100%;
+  height: 20%;
+  background-color: chartreuse;
+  z-index: 1;
+}
+
+.swiper-custom{
+  position: relative;
+  width: 100%;
+  z-index: -1;
+}
+
+.notice-box{
+  font-size: 28rpx;
+}
+
+.time-text{
+  /* text-align: right; */
+  float: right;
+  color: rgb(138, 135, 135);
+}
+
+.title-text{
+  /* color: cornflowerblue; */
+  text-decoration: underline;
+}
+
+.icon-text{
+  font-size: 28rpx !important;
+}
+
+.bar-text{
+  font-size: 30rpx !important;
+  font-weight: bold;
+}
+
+.more-btn{
+  position: relative;
+  margin-top: -5rpx;
+}
+
+.scroll_box{
+  width: 100%;
+  height: 85px;
+  /* necessary */
+  /* white-space
+  normal: 正常无变化(默认处理方式.文本自动处理换行.假如抵达容器边界内容会转到下一行)
+  pre: 保持HTML源代码的空格与换行,等同与pre标签
+  nowrap: 强制文本在一行,除非遇到br换行标签
+  pre-wrap: 同pre属性,但是遇到超出容器范围的时候会自动换行
+  pre-line: 同pre属性,但是遇到连续空格会被看作一个空格
+  inherit: 继承 */
+  /* overflow: hidden; */
+  /* white-space: nowrap; */
+  /* padding: 5rpx; */
+  background: #fff;
+  }
+
+  .item_plus{
+    display: inline-block;
+    width: 25%;
+    height: 100%;
+    padding: 0.5px;
+    text-align: center;
+  }
+
+  /* 莫名其妙需要一个终结符？？ 没有这个显示不全 */
+  .end_plus{
+    display: inline-block;
+    width: 0%;
+    height: 100%;
+    padding: 0.5px;
+    text-align: center;
+  }
+
+  .van-grid-item__icon{
+    margin: 0 auto;
+  }

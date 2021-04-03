@@ -1,0 +1,21 @@
+<!--pages/centerOperation/installFile/index.wxml-->
+<view class="modify-form">
+  <form bindsubmit="formSubmit">
+
+    <view class="label-list">
+      <view class="label">标题</view>
+      <text placeholder-class="place" name='id'>{{item.fname}}</text>
+    </view>
+    <view class="label-list">
+      <view class="label">正文</view>
+    </view>
+    <view wx:if="{{item.content!=null&&item.content!=''}}" class="label-list1">
+      <view style='position:relative;margin-top:25rpx;' placeholder-class="place">{{item.content}}</view>
+    </view>
+    <view class="label-list">
+      <view class="label">附件</view>
+      <text placeholder-class="place" name="fujian">{{item.flink}}</text>
+    </view>
+    <button form-type='submit' class="submit" disabled="{{disableFlag}}">下载附件</button>
+  </form>
+</view>

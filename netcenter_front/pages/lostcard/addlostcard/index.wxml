@@ -1,0 +1,12 @@
+<!--pages/lostcard/addlostcard/index.wxml-->
+<i-panel>
+  <i-input bind:change="cardid" maxlength='12' value="{{ id }}" type="number" title="学号" placeholder="一卡通学号"/>
+  <i-input bind:change="name"maxlength='10' value="{{ name }}" type="text" title="姓名" placeholder="一卡通姓名"/>
+  <i-input bind:change="description" value="{{ description }}" type="textarea" title="说明" placeholder="请输入详细描述(最多100字)" maxlength="100" />
+  <i-input bind:change="contact" maxlength='11' title="联系方式" placeholder="手机号/qq" value="{{ contact }}" type="number" />
+  <!-- 上传图片 -->
+<!-- <view style="display:flex;font-size:28rpx;color:#495060;border: 0 solid #e9eaec;padding:5px 13px;">上传图片</view>
+  <crab-uploadpic bindmyevent="myEventListener" count='{{countPic}}' showUrl="{{showImgUrl}}" uploadUrl="{{uploadImgUrl}}"></crab-uploadpic> -->
+  <i-button bind:click="submitInfo" disabled="{{buttonflag}}" type="success" shape="circle" size="small">发布</i-button>
+</i-panel>
+<i-toast id="toast" />
