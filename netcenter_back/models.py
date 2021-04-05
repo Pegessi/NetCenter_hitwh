@@ -65,3 +65,36 @@ class QuestionType(db.Model):
     __tablename__="type"
     id=db.Column(db.Integer(),primary_key=True)
     type=db.Column(db.String(255))
+    
+class Notice(db.Model):
+    __tablename__="notice"
+    id=db.Column(db.Integer(),primary_key=True)
+    title = db.Column(db.String(100))
+    link = db.Column(db.String(100))
+    date = db.Column(db.String(20))
+class Test(db.Model):
+    __tablename__ = "test"
+    id=db.Column(db.Integer(),primary_key=True)
+    name=db.Column(db.String(20))
+class Push(db.Model):
+    __tablename__="push"
+    name=db.Column(db.String(100),primary_key=True)
+    imgurl=db.Column(db.String(100))
+    link=db.Column(db.String(100))
+
+class VsInfo(db.Model):
+    __tablename__= "vsinfo"
+    id=db.Column(db.Integer(),primary_key=True)
+    name = db.Column(db.String(100))
+    link = db.Column(db.String(100))
+    sponsor = db.Column(db.String(100))
+    level = db.Column(db.String(100))
+    register_time = db.Column(db.String(100))
+    play_time = db.Column(db.String(100))
+
+class WxInfo(db.Model):
+    __tablename__="wxinfo"
+    id = db.Column(db.Integer(),primary_key=True)
+    openid = db.Column(db.String(100))
+    name_wx = db.Column(db.String(100))
+    image_wx = db.Column(db.String(100))

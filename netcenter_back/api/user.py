@@ -7,7 +7,9 @@ from email.mime.text import MIMEText
 from email.header import Header 
 import smtplib 
 import requests
+from sqlalchemy import or_ 
 from params import mailConfig,wxConfig,TECENT_TIMEOUT_INTERVAL
+
 
 app = Flask(__name__)
 blueprintUser = Blueprint('user', __name__)
@@ -259,8 +261,9 @@ def workmanDelete():
 # 获得所有维修人员
 @blueprintUser.route('/workmanGet')
 def workmanGet():
-    user=Info.query.filter_by(identity='2').all()
-    length=Info.query.filter_by(identity='2').count()
+    user=Info.query.filter(or_(Info.identity=='2',Info.id=='9918505')).all()
+
+    length=Info.query.filter(or_(Info.identity=='2',Info.id=='9918505')).count()
     
     db.session.close()
     if length!=0:

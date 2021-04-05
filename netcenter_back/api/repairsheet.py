@@ -1,4 +1,4 @@
-# coding:utf-8
+#-*- coding: utf-8 -*-
 from flask import Flask,request,json, jsonify,Blueprint
 from flask_sqlalchemy import SQLAlchemy
 from models import Repair,db,Info
@@ -8,68 +8,79 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText    
 from email.header import Header 
 import time
-
+import chardet
 blueprintRepair = Blueprint('repairsheet', __name__)
 
 # 测试
-@blueprintRepair.route('/test',methods=['GET','POST'])
+@blueprintRepair.route('/mailtest',methods=['GET','POST'])
 def test():
+    mail_user = 'hitwhnetcenter@126.com'
+    mail_pass = 'hitwhshouquan9'
+    receivers = ['yami1455530881@outlook.com,1455530881@qq.com']
     if request.method == 'POST':
-        mail_user = 'hitwhnetcenter@126.com'
-        mail_pass = 'hitwhshouquan9'
-        receivers = ['yami1455530881@outlook.com,1455530881@qq.com']
+        submitid=request.values.get('submitid')
+        submitdate=time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
+        repairlocation=request.values.get("repairlocation")
+        repairapartment=request.values.get("repairapartment")
+        # repairtype=request.values.get("repairtype")
+        repairroom=request.values.get("repairroom")
+        repairdescription=request.values.get("repairdescription")
+        repaircontact=request.values.get("repaircontact")
+        repairstatus="待处理"
+        username=request.values.get("username")
+        previousid=request.values.get("previousid")
+        failsolution=''
+        
 
         try:
+            
             subject="hitwh网络中心-通知"
             subject=Header(subject, 'utf-8').encode()
             msg = MIMEMultipart('mixed')
             msg['Subject']=subject
             msg['From'] = mail_user
             msg['To'] = ','.join(receivers)
-
+            test = 'test'
             #构造邮件内容
-            text = "您提交的编号为"+"123" +"的报修单维修完毕，如有问题请致电网络中心：0631-5687184"
+            text ="您有新的报修单待处理哦，请进入小程序进行处理。\n地点："+str(repairapartment)+"-"+str(repairroom)+"\n故障描述："+str(repairdescription)+"\n用户名:"+str(username)+"\n联系方式:"+str(repaircontact)+"\n提交时间:"+str(submitdate)
             text_plain = MIMEText(text,'plain', 'utf-8')  
             msg.attach(text_plain)
-
-            smtp = smtplib.SMTP()
-            smtp.connect('smtp.126.com',25)
+            smtp = smtplib.SMTP_SSL('smtp.126.com',465)
+            #查看调试信息
+            smtp.set_debuglevel(1)
             smtp.login(mail_user,mail_pass) 
             smtp.sendmail(mail_user,msg['To'].split(','),msg.as_string()) 
             smtp.quit()
             print("邮件发送成功")
         except smtplib.SMTPException:
                 print("Error: 无法发送邮件")
-        print("ok")
-    else:
-        print("fail")
-    return 'test'
+    return 'mailtest'
 
-# 邮箱测试
-@blueprintRepair.route('/',methods=['GET','POST'])
-def mailTest():
-    # 构造邮件主题
-    subject="hitwh网络中心-通知"
-    subject=Header(subject, 'utf-8').encode()
-    msg = MIMEMultipart('mixed')
-    msg['Subject']=subject
-    msg['From'] = mailConfig['user']
-    receiver=mailConfig['user']+","+mailConfig['manager']
-    msg['To'] = mailConfig['user']+";"+mailConfig['manager']
-    fname="text.txt"
-    flink="https://savefiles-1257168605.cos.ap-beijing.myqcloud.com/IPandDomain.doc"
-    #构造邮件内容
-    # text = "您有新的报修单待处理哦，请进入小程序进行处理。\n"
-    text = "文件"+flink+"的下载链接：。\n"
-    text_plain = MIMEText(text,'plain', 'utf-8')    
-    msg.attach(text_plain)
+# # 邮箱测试
+# @blueprintRepair.route('/',methods=['GET','POST'])
+# def mailTest():
+#     # 构造邮件主题
+#     subject="hitwh网络中心-通知"
+#     subject=Header(subject, 'utf-8').encode()
+#     msg = MIMEMultipart('mixed')
+#     msg['Subject']=subject
+#     msg['From'] = mailConfig['user']
+#     receiver=mailConfig['user']+","+mailConfig['manager']
+#     msg['To'] = mailConfig['user']+";"+mailConfig['manager']
+#     fname="text.txt"
+#     flink="https://savefiles-1257168605.cos.ap-beijing.myqcloud.com/IPandDomain.doc"
+#     #构造邮件内容
+#     # text = "您有新的报修单待处理哦，请进入小程序进行处理。\n"
+#     text = "文件"+flink+"的下载链接：。\n"
+#     text_plain = MIMEText(text,'plain', 'utf-8')    
+#     msg.attach(text_plain)
 
-    smtp = smtplib.SMTP()
-    smtp.connect('smtp.126.com',25) 
-    smtp.login(mailConfig['user'],mailConfig['password']) 
-    smtp.sendmail(mailConfig['user'],receiver,msg.as_string()) 
-    smtp.quit()
-    return '0'
+#     smtp = smtplib.SMTP()
+#     smtp.connect('smtp.126.com',25) 
+#     smtp.login(mailConfig['user'],mailConfig['password']) 
+#     smtp.sendmail(mailConfig['user'],receiver,msg.as_string()) 
+#     smtp.quit()
+#     return '0'
 
 # 增加报修单
 @blueprintRepair.route('/repairAdd',methods=['GET','POST'])
@@ -89,6 +100,7 @@ def repairAdd():
         previousid=request.values.get("previousid")
         failsolution=''
         if not submitid or not submitdate or not repairlocation or not repairapartment or not repairroom or not repairdescription or not repaircontact or not repairstatus or not username:
+        
             t['status']='false'
             t['submitdate']=submitdate
             t['submitid']=submitid
@@ -101,6 +113,7 @@ def repairAdd():
             t['previousid']=previousid
             t['failsolution']=failsolution
         else:
+            
             repair = Repair(submitid=submitid,submitdate=submitdate,repairlocation=repairlocation,repairapartment=repairapartment,repairroom=repairroom,repairdescription=repairdescription,repaircontact=repaircontact,repairstatus=repairstatus,submitname=username,previousid=previousid,failsolution=failsolution,showflag=0)
             db.session.add(repair)
             try:
@@ -120,14 +133,17 @@ def repairAdd():
             msg['From'] = mailConfig['user']
             msg['To'] = ','.join(mailConfig['manager'])
             #构造邮件内容
-            text = "您有新的报修单待处理哦，请进入小程序进行处理。\n地点："+repairapartment+"-"+repairroom+"\n故障描述："+repairdescription+"\n用户名:"+username+"\n联系方式:"+repaircontact+"\n提交时间:"+submitdate   
+            text ="您有新的报修单待处理哦，请进入小程序进行处理。\n地点："+str(repairapartment)+"-"+str(repairroom)+"\n故障描述："+str(repairdescription)+"\n用户名:"+str(username)+"\n联系方式:"+str(repaircontact)+"\n提交时间:"+str(submitdate) 
             text_plain = MIMEText(text,'plain', 'utf-8')    
             msg.attach(text_plain)
-            smtp = smtplib.SMTP()
-            smtp.connect('smtp.126.com',25) 
+            #smtp 25端口在服务器经测试不能使用 使用SSl加密发送 端口为465
+            smtp = smtplib.SMTP_SSL('smtp.126.com',465)
+            #查看调试信息
+            #smtp.set_debuglevel(1) 
             smtp.login(mailConfig['user'],mailConfig['password']) 
             smtp.sendmail(mailConfig['user'],msg['To'].split(','),msg.as_string())
             smtp.quit()
+            print("发送成功")
     else:
         t['status']='false'
     return json.dumps(t,ensure_ascii=False)
@@ -190,13 +206,12 @@ def repairDistribute():
                 msg['To'] = email
 
                 #构造邮件内容
-                # text = "您有报修单待接单哦，请进入小程序进行处理。\n"
-                text = "您有新的报修单待处理哦，请进入小程序进行处理。\n地点："+repairapartment+"-"+repairroom+"\n故障描述："+repairdescription+"\n用户名:"+username+"\n联系方式:"+repaircontact+"\n提交时间:"+submitdate   
+                text = "您有新的报修单待处理哦，请进入小程序进行处理。\n地点："+str(repairapartment)+"-"+str(repairroom)+"\n故障描述："+str(repairdescription)+"\n用户名:"+str(username)+"\n联系方式:"+str(repaircontact)+"\n提交时间:"+str(submitdate)   
                 text_plain = MIMEText(text,'plain', 'utf-8')    
                 msg.attach(text_plain)
 
-                smtp = smtplib.SMTP()
-                smtp.connect('smtp.126.com',25) 
+                #smtp 25端口在服务器经测试不能使用 使用SSl加密发送 端口为465
+                smtp = smtplib.SMTP_SSL('smtp.126.com',465)
                 smtp.login(mailConfig['user'],mailConfig['password']) 
                 smtp.sendmail(mailConfig['user'],email,msg.as_string()) 
                 smtp.quit()
@@ -293,12 +308,12 @@ def repairAccept():
                 msg['To'] = email
 
                 #构造邮件内容
-                text = "您提交的编号为"+ tableid+"的报修单已被接单\n"+"维修员信息为:"+workman_name+"-"+workman_phone+"\n如有疑问可联系维修员或者致电网络中心: 0631-5687184"
+                text = "您提交的编号为"+str(tableid)+"的报修单已被接单\n"+"维修员信息为:"+str(workman_name)+"-"+str(workman_phone)+"\n如有疑问可联系维修员或者致电网络中心: 0631-5687184"
                 text_plain = MIMEText(text,'plain', 'utf-8')  
                 msg.attach(text_plain)
 
-                smtp = smtplib.SMTP()
-                smtp.connect('smtp.126.com',25)
+                #smtp 25端口在服务器经测试不能使用 使用SSl加密发送 端口为465
+                smtp = smtplib.SMTP_SSL('smtp.126.com',465)
                 smtp.login(mailConfig['user'],mailConfig['password']) 
                 smtp.sendmail(mailConfig['user'],email,msg.as_string()) 
                 smtp.quit()
@@ -373,12 +388,12 @@ def repairsuccess():
             msg['To'] = email
 
             #构造邮件内容
-            text = "您提交的编号为"+ tableid+"的报修单维修完毕，如有问题请致电网络中心：0631-5687184"
+            text = "您提交的编号为"+str(tableid)+"的报修单维修完毕，如有问题请致电网络中心：0631-5687184"
             text_plain = MIMEText(text,'plain', 'utf-8')  
             msg.attach(text_plain)
 
-            smtp = smtplib.SMTP()
-            smtp.connect('smtp.126.com',25)
+            #smtp 25端口在服务器经测试不能使用 使用SSl加密发送 端口为465
+            smtp = smtplib.SMTP_SSL('smtp.126.com',465)
             smtp.login(mailConfig['user'],mailConfig['password']) 
             smtp.sendmail(mailConfig['user'],email,msg.as_string()) 
             smtp.quit()
@@ -441,12 +456,12 @@ def repairfail():
             msg['To'] = mailConfig['manager']
 
             #构造邮件内容
-            text = "有维修单维修失败，已返回到待处理状态，请进入小程序进行处理。\n地点："+repairapartment+"-"+repairroom+"\n故障描述："+repairdescription+"\n故障留言："  +comment 
+            text = "有维修单维修失败，已返回到待处理状态，请进入小程序进行处理。\n地点："+str(repairapartment)+"-"+str(repairroom)+"\n故障描述："+str(repairdescription)+"\n故障留言："  +str(comment)
             text_plain = MIMEText(text,'plain', 'utf-8')  
             msg.attach(text_plain)
 
-            smtp = smtplib.SMTP()
-            smtp.connect('smtp.126.com',25)
+            #smtp 25端口在服务器经测试不能使用 使用SSl加密发送 端口为465
+            smtp = smtplib.SMTP_SSL('smtp.126.com',465)
             smtp.login(mailConfig['user'],mailConfig['password']) 
             smtp.sendmail(mailConfig['user'],mailConfig['manager'],msg.as_string()) 
             smtp.quit()
