@@ -71,7 +71,7 @@ def VsInfoCrawler():
                finally:
                     db.session.close()
      
-     return "getVsInfo"
+     return "VsInfoCrawler"
 
 @blueprintVsInfo.route('/getVsInfo')
 def getVsInfo():

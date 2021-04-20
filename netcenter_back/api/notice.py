@@ -21,18 +21,18 @@ db.create_all()
 #爬取网页通知
 @blueprintNotice.route('/noticecrawler')
 def noticecrawler():
-     while Notice.query.count() != 0:
-          try:
-               notice = Notice.query.first()
-               db.session.delete(notice)
-               db.session.commit()
+     # while Notice.query.count() != 0:
+     #      try:
+     #           notice = Notice.query.first()
+     #           db.session.delete(notice)
+     #           db.session.commit()
                
-               # print('---删除成功---')
-          except:
-               app.logger.error("Error in delete data", exc_info=True)
-               db.session.rollback()    
-          finally:
-               db.session.close()
+     #           print('---删除成功---')
+     #      except:
+     #           app.logger.error("Error in delete data", exc_info=True)
+     #           db.session.rollback()    
+     #      finally:
+     #           db.session.close()
 
      #url头
      server = 'https://www.hitwh.edu.cn'
@@ -56,19 +56,31 @@ def noticecrawler():
      li = div_bf.find_all('li')
      #遍历文档逐个输出
      i =1
-     for each in li:
-          notice = Notice(id =i,title = each.find('a').get_text(),link = server+each.find('a').get('href'),date = each.find('span',class_='news-time').get_text())
-         
+     while Notice.query.count() != 0:
           try:
-               db.session.add(notice)
+               notice = Notice.query.first()
+               db.session.delete(notice)
                db.session.commit()
-               i=i+1
+               
+               print('---删除成功---')
           except:
-               app.logger.error("Error in  add", exc_info=True)
-               db.session.rollback()
+               app.logger.error("Error in delete data", exc_info=True)
+               db.session.rollback()    
           finally:
                db.session.close()
-     # print('---爬取成功---')
+     else:
+          for each in li:
+               try:
+                    notice = Notice(id =i,title = each.find('a').get_text(),link = server+each.find('a').get('href'),date = each.find('span',class_='news-time').get_text())
+                    db.session.add(notice)
+                    db.session.commit()
+                    i=i+1
+               except:
+                    app.logger.error("Error in  add", exc_info=True)
+                    db.session.rollback()
+               finally:
+                    db.session.close()
+          print('---爬取成功---')
      return 'noticecrawler'   
 
 #获取数据库爬取的数据

@@ -3,6 +3,7 @@ from os import set_inheritable, truncate
 from flask import Flask,request,json, jsonify
 from flask.helpers import total_seconds
 from flask_sqlalchemy import SQLAlchemy
+from pytz import HOUR
 from params import appConfig
 from api.user import blueprintUser
 from api.repairsheet import blueprintRepair
@@ -81,8 +82,8 @@ def myScheduler():
         timezone (datetime.tzinfo|str) – time zone to use for the date/time calculations (defaults to scheduler timezone) -（表示时区取值）
         '''
 
-        sched.add_job(noticecrawler, 'interval', hours = 24 ,id ='noticecrawler')
-        sched.add_job(VsInfoCrawler,'cron',hour = '8,20',id = 'VsInfoCrawler')
+        sched.add_job(noticecrawler, 'cron',hour='12,18' ,id ='noticecrawler')
+        sched.add_job(VsInfoCrawler,'cron',hour ='12,18',id = 'VsInfoCrawler')
         
         #启动scheduler
         sched.start()        

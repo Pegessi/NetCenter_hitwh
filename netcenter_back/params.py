@@ -3,7 +3,7 @@ TECENT_TIMEOUT_INTERVAL = 5
 # secretKey = b"/[\xec\nz8Q4F'L2y#5_"
 appConfig = {
                 'DEBUG': True,
-                'SQLALCHEMY_DATABASE_URI': 'mysql+pymysql://root:netCenter123@49.234.55.242:3306/netcenter?autocommit=true',
+                'SQLALCHEMY_DATABASE_URI': 'mysql+pymysql://root:root@49.234.55.242:3306/netcenter?autocommit=true',
                 'pool_size':100, 
                 'max_overflow':20,
                 'SQLALCHEMY_POOL_RECYCLE':360
